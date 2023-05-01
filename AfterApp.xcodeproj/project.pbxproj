@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1D33A3BD2A0074280023FC56 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D33A3BC2A0074280023FC56 /* LoginView.swift */; };
 		1DB0345729FF0E39008AB429 /* AfterAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DB0345629FF0E39008AB429 /* AfterAppApp.swift */; };
 		1DB0345929FF0E39008AB429 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DB0345829FF0E39008AB429 /* ContentView.swift */; };
 		1DB0345B29FF0E3B008AB429 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1DB0345A29FF0E3B008AB429 /* Assets.xcassets */; };
@@ -34,6 +35,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1D33A3BC2A0074280023FC56 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		1DB0345329FF0E39008AB429 /* AfterApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AfterApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DB0345629FF0E39008AB429 /* AfterAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AfterAppApp.swift; sourceTree = "<group>"; };
 		1DB0345829FF0E39008AB429 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -98,6 +100,7 @@
 				1DB0345829FF0E39008AB429 /* ContentView.swift */,
 				1DB0345A29FF0E3B008AB429 /* Assets.xcassets */,
 				1DB0345C29FF0E3B008AB429 /* Preview Content */,
+				1D33A3BC2A0074280023FC56 /* LoginView.swift */,
 			);
 			path = AfterApp;
 			sourceTree = "<group>";
@@ -257,6 +260,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1D33A3BD2A0074280023FC56 /* LoginView.swift in Sources */,
 				1DB0345929FF0E39008AB429 /* ContentView.swift in Sources */,
 				1DB0345729FF0E39008AB429 /* AfterAppApp.swift in Sources */,
 			);
