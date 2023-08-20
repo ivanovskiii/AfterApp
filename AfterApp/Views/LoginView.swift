@@ -7,25 +7,23 @@
 
 import SwiftUI
 
-import SwiftUI
-
 struct LoginView: View {
-    @State private var username: String = ""
-    @State private var password: String = ""
+
+    @ObservedObject var loginViewModel: LoginViewModel
     @State var showPassword: Bool = false
     
     var body: some View {
-        VStack (alignment: .leading, spacing: 15) {
+        VStack (alignment: .center, spacing: 10) {
             Spacer()
             Image("AfterLogo")
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .frame(width: 180.0)
-                .padding(.leading, CGFloat(90))
-                .padding(.bottom, CGFloat(100))
-            TextField("Username", text: $username, prompt: Text("Username").foregroundColor(Color("AfterBeige")))
+            Spacer()
+            TextField("Email", text: $loginViewModel.email, prompt: Text("Email").foregroundColor(Color("AfterBeige")))
                 .foregroundColor(Color("AfterBeige"))
                 .padding(10)
+                .frame(height: 55)
                 .overlay{
                     RoundedRectangle(cornerRadius: 10)
                         .stroke(.white, lineWidth: 2)
@@ -35,13 +33,15 @@ struct LoginView: View {
             HStack{
                 Group{
                     if showPassword{
-                        TextField("Password", text: $password,
+                        TextField("Password", text: $loginViewModel.password,
                                   prompt: Text("Password").foregroundColor(Color("AfterBeige")))
                                                 .foregroundColor(Color("AfterBeige"))
+                                                .frame(height: 55)
                     } else{
                         SecureField("Password",
-                                    text: $password,
+                                    text: $loginViewModel.password,
                                     prompt: Text("Password").foregroundColor(Color("AfterBeige"))).foregroundColor(Color("AfterBeige"))
+                            .frame(height: 35)
                         
                     }
                 }
@@ -54,18 +54,36 @@ struct LoginView: View {
             .padding(.horizontal)
             Spacer()
             
-            Button {
-              print("do login action")
+            //Sign In Button
+            NavigationLink{
+                Text("Hello")
             } label: {
-              Text("Sign In")
-              .font(.title2)
-              .foregroundColor(Color("AfterDarkGray"))
+                Text("Sign In")
+                    .font(.headline)
+                    .foregroundColor(Color("AfterDarkGray"))
+                    .frame(height: 55)
+                    .frame(maxWidth: .infinity)
+                    .background(Color("AfterBeige"))
+                    .cornerRadius(10)
             }
-            .frame(height: 50)
-            .frame(maxWidth: .infinity)
-            .background(Color("AfterBeige"))
-            .cornerRadius(20)
-            .padding()
+            .padding(.horizontal)
+            
+            //Register Button
+            NavigationLink{
+                Text("Hello")
+            } label: {
+                Text("Create Account")
+                    .font(.headline)
+                    .foregroundColor(Color("AfterBeige"))
+                    .frame(height: 55)
+                    .frame(maxWidth: .infinity)
+                    .cornerRadius(10)
+                    .overlay{
+                        RoundedRectangle(cornerRadius: 10)
+                            .stroke(Color("AfterBeige"), lineWidth: 2)
+                    }
+            }
+            .padding(.horizontal)
             
         }
         .background(Color("AfterDarkGray"))
@@ -75,7 +93,9 @@ struct LoginView: View {
 
 struct LoginView_Previews: PreviewProvider {
     static var previews: some View {
-        LoginView()
+        NavigationStack {
+            LoginView(loginViewModel: LoginViewModel())
+        }
     }
 }
 

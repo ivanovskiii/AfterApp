@@ -29,6 +29,9 @@
 		1DF8DF572A92A3A0008EA537 /* AlbumListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF8DF562A92A3A0008EA537 /* AlbumListViewModel.swift */; };
 		1DF8DF582A92A3A0008EA537 /* AlbumListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF8DF562A92A3A0008EA537 /* AlbumListViewModel.swift */; };
 		1DF8DF592A92A3A0008EA537 /* AlbumListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF8DF562A92A3A0008EA537 /* AlbumListViewModel.swift */; };
+		1DF8DF5F2A92BF07008EA537 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF8DF5E2A92BF07008EA537 /* LoginViewModel.swift */; };
+		1DF8DF602A92BF07008EA537 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF8DF5E2A92BF07008EA537 /* LoginViewModel.swift */; };
+		1DF8DF612A92BF07008EA537 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF8DF5E2A92BF07008EA537 /* LoginViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +68,7 @@
 		1DF8DF462A929B3B008EA537 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		1DF8DF522A92A0FC008EA537 /* AlbumRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumRepository.swift; sourceTree = "<group>"; };
 		1DF8DF562A92A3A0008EA537 /* AlbumListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumListViewModel.swift; sourceTree = "<group>"; };
+		1DF8DF5E2A92BF07008EA537 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -168,6 +172,7 @@
 			isa = PBXGroup;
 			children = (
 				1DF8DF562A92A3A0008EA537 /* AlbumListViewModel.swift */,
+				1DF8DF5E2A92BF07008EA537 /* LoginViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -334,6 +339,7 @@
 				1D33A3BD2A0074280023FC56 /* LoginView.swift in Sources */,
 				1DB0345929FF0E39008AB429 /* AlbumListView.swift in Sources */,
 				1DF8DF532A92A0FC008EA537 /* AlbumRepository.swift in Sources */,
+				1DF8DF5F2A92BF07008EA537 /* LoginViewModel.swift in Sources */,
 				1DB0345729FF0E39008AB429 /* AfterAppApp.swift in Sources */,
 				1DF8DF572A92A3A0008EA537 /* AlbumListViewModel.swift in Sources */,
 				1DF8DF452A9296C0008EA537 /* Album.swift in Sources */,
@@ -344,6 +350,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1DF8DF602A92BF07008EA537 /* LoginViewModel.swift in Sources */,
 				1DB0346829FF0E3B008AB429 /* AfterAppTests.swift in Sources */,
 				1DF8DF542A92A0FC008EA537 /* AlbumRepository.swift in Sources */,
 				1DF8DF582A92A3A0008EA537 /* AlbumListViewModel.swift in Sources */,
@@ -357,6 +364,7 @@
 				1DF8DF592A92A3A0008EA537 /* AlbumListViewModel.swift in Sources */,
 				1DF8DF552A92A0FC008EA537 /* AlbumRepository.swift in Sources */,
 				1DB0347429FF0E3B008AB429 /* AfterAppUITestsLaunchTests.swift in Sources */,
+				1DF8DF612A92BF07008EA537 /* LoginViewModel.swift in Sources */,
 				1DB0347229FF0E3B008AB429 /* AfterAppUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
