@@ -22,10 +22,12 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 struct AfterAppApp: App {
     
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
+    @StateObject var authenticationViewModel = AuthenticationViewModel()
     
     var body: some Scene {
         WindowGroup {
-            AlbumListView(albumListViewModel: AlbumListViewModel())
+            ContentView()
+                .environmentObject(authenticationViewModel)
         }
     }
 }
