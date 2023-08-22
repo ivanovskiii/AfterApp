@@ -13,6 +13,7 @@
 		1D33A3BD2A0074280023FC56 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D33A3BC2A0074280023FC56 /* LoginView.swift */; };
 		1D5C20B82A94EA3700BE762B /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D5C20B72A94EA3700BE762B /* User.swift */; };
 		1D5C20BA2A953EEB00BE762B /* NewAlbumSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D5C20B92A953EEB00BE762B /* NewAlbumSheetView.swift */; };
+		1D5C20BE2A95478F00BE762B /* Shrikhand-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1D5C20BD2A95478F00BE762B /* Shrikhand-Regular.ttf */; };
 		1D958B2B2A938B690079CE2E /* RiveRuntime in Frameworks */ = {isa = PBXBuildFile; productRef = 1D958B2A2A938B690079CE2E /* RiveRuntime */; };
 		1D958B2D2A938BED0079CE2E /* after_start_animation.riv in Resources */ = {isa = PBXBuildFile; fileRef = 1D958B2C2A938BEC0079CE2E /* after_start_animation.riv */; };
 		1D958B2E2A938BED0079CE2E /* after_start_animation.riv in Resources */ = {isa = PBXBuildFile; fileRef = 1D958B2C2A938BEC0079CE2E /* after_start_animation.riv */; };
@@ -68,6 +69,8 @@
 		1D33A3BC2A0074280023FC56 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		1D5C20B72A94EA3700BE762B /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		1D5C20B92A953EEB00BE762B /* NewAlbumSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewAlbumSheetView.swift; sourceTree = "<group>"; };
+		1D5C20BD2A95478F00BE762B /* Shrikhand-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Shrikhand-Regular.ttf"; sourceTree = "<group>"; };
+		1D5C20C02A9547D600BE762B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		1D958B2C2A938BEC0079CE2E /* after_start_animation.riv */ = {isa = PBXFileReference; lastKnownFileType = file; path = after_start_animation.riv; sourceTree = "<group>"; };
 		1DB0345329FF0E39008AB429 /* AfterApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AfterApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DB0345629FF0E39008AB429 /* AfterAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AfterAppApp.swift; sourceTree = "<group>"; };
@@ -117,9 +120,35 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1D5C20BB2A95471800BE762B /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				1D5C20BF2A9547B500BE762B /* RiveAnimations */,
+				1D5C20BC2A95472000BE762B /* Fonts */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		1D5C20BC2A95472000BE762B /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				1D5C20BD2A95478F00BE762B /* Shrikhand-Regular.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		1D5C20BF2A9547B500BE762B /* RiveAnimations */ = {
+			isa = PBXGroup;
+			children = (
+				1D958B2C2A938BEC0079CE2E /* after_start_animation.riv */,
+			);
+			path = RiveAnimations;
+			sourceTree = "<group>";
+		};
 		1DB0344A29FF0E39008AB429 = {
 			isa = PBXGroup;
 			children = (
+				1D5C20BB2A95471800BE762B /* Shared */,
 				1DB0345529FF0E39008AB429 /* AfterApp */,
 				1DB0346629FF0E3B008AB429 /* AfterAppTests */,
 				1DB0347029FF0E3B008AB429 /* AfterAppUITests */,
@@ -140,6 +169,7 @@
 		1DB0345529FF0E39008AB429 /* AfterApp */ = {
 			isa = PBXGroup;
 			children = (
+				1D5C20C02A9547D600BE762B /* Info.plist */,
 				1DF8DF512A92A0EC008EA537 /* Repository */,
 				1DF8DF402A929478008EA537 /* Views */,
 				1DF8DF3F2A929472008EA537 /* ViewModels */,
@@ -147,7 +177,6 @@
 				1DF8DF462A929B3B008EA537 /* GoogleService-Info.plist */,
 				1DB0345629FF0E39008AB429 /* AfterAppApp.swift */,
 				1DB0345A29FF0E3B008AB429 /* Assets.xcassets */,
-				1D958B2C2A938BEC0079CE2E /* after_start_animation.riv */,
 				1DB0345C29FF0E3B008AB429 /* Preview Content */,
 			);
 			path = AfterApp;
@@ -333,6 +362,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1D5C20BE2A95478F00BE762B /* Shrikhand-Regular.ttf in Resources */,
 				1DB0345E29FF0E3B008AB429 /* Preview Assets.xcassets in Resources */,
 				1DB0345B29FF0E3B008AB429 /* Assets.xcassets in Resources */,
 				1D958B2D2A938BED0079CE2E /* after_start_animation.riv in Resources */,
@@ -546,12 +576,13 @@
 				DEVELOPMENT_TEAM = 9L6RNBKCUL;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = AfterApp/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = After;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.photography";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleLightContent;
+				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleDarkContent;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -577,12 +608,13 @@
 				DEVELOPMENT_TEAM = 9L6RNBKCUL;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = AfterApp/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = After;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.photography";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleLightContent;
+				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleDarkContent;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

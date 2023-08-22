@@ -29,12 +29,11 @@ struct AlbumListView: View {
             ScrollView {
                 LazyVGrid(columns: columns, spacing: 16) {
                     Button() {
-//                        let album = Album(user: authenticationViewModel.currentUser!, name: "Test Album One", isLocked: true, unlockTime: Date().addingTimeInterval(12 * 3600), isPrivate: false)
-//                        albumListViewModel.add(album)
                         isShowingAlbumAddSheet.toggle()
                     } label: {
                         VStack(alignment: .center, spacing: 10){
                             Text("New Roll")
+                                .font(Font.custom("Shrikhand-Regular", size: 18))
                             Image(systemName: "plus.circle")
                         }
                     }
@@ -48,6 +47,7 @@ struct AlbumListView: View {
                     ForEach(albumListViewModel.albums) { album in
                         if (album.user.id == authenticationViewModel.currentUser?.id){
                             Text(album.name)
+                                .font(Font.custom("Shrikhand-Regular", size: 18))
                                 .frame(maxWidth: .infinity, minHeight: 180)
                                 .background(Color.gray)
                                 .cornerRadius(20)
