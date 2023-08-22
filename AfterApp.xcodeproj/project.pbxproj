@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		1D0C905F2A93DB740095C691 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D0C905E2A93DB740095C691 /* ContentView.swift */; };
+		1D1C9AE52A94C23600A667F7 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D1C9AE42A94C23600A667F7 /* MainView.swift */; };
+		1D1C9AE72A94C2E200A667F7 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D1C9AE62A94C2E200A667F7 /* ProfileView.swift */; };
 		1D33A3BD2A0074280023FC56 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D33A3BC2A0074280023FC56 /* LoginView.swift */; };
 		1D958B2B2A938B690079CE2E /* RiveRuntime in Frameworks */ = {isa = PBXBuildFile; productRef = 1D958B2A2A938B690079CE2E /* RiveRuntime */; };
 		1D958B2D2A938BED0079CE2E /* after_start_animation.riv in Resources */ = {isa = PBXBuildFile; fileRef = 1D958B2C2A938BEC0079CE2E /* after_start_animation.riv */; };
@@ -59,6 +61,8 @@
 
 /* Begin PBXFileReference section */
 		1D0C905E2A93DB740095C691 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		1D1C9AE42A94C23600A667F7 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		1D1C9AE62A94C2E200A667F7 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		1D33A3BC2A0074280023FC56 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		1D958B2C2A938BEC0079CE2E /* after_start_animation.riv */ = {isa = PBXFileReference; lastKnownFileType = file; path = after_start_animation.riv; sourceTree = "<group>"; };
 		1DB0345329FF0E39008AB429 /* AfterApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AfterApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -195,6 +199,8 @@
 				1D33A3BC2A0074280023FC56 /* LoginView.swift */,
 				1DB2B7872A939CB200413B9B /* CreateAccountView.swift */,
 				1D0C905E2A93DB740095C691 /* ContentView.swift */,
+				1D1C9AE42A94C23600A667F7 /* MainView.swift */,
+				1D1C9AE62A94C2E200A667F7 /* ProfileView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -357,9 +363,11 @@
 				1D33A3BD2A0074280023FC56 /* LoginView.swift in Sources */,
 				1DB0345929FF0E39008AB429 /* AlbumListView.swift in Sources */,
 				1DB2B7882A939CB200413B9B /* CreateAccountView.swift in Sources */,
+				1D1C9AE72A94C2E200A667F7 /* ProfileView.swift in Sources */,
 				1DF8DF532A92A0FC008EA537 /* AlbumRepository.swift in Sources */,
 				1DF8DF5F2A92BF07008EA537 /* AuthenticationViewModel.swift in Sources */,
 				1D0C905F2A93DB740095C691 /* ContentView.swift in Sources */,
+				1D1C9AE52A94C23600A667F7 /* MainView.swift in Sources */,
 				1DB0345729FF0E39008AB429 /* AfterAppApp.swift in Sources */,
 				1DF8DF572A92A3A0008EA537 /* AlbumListViewModel.swift in Sources */,
 				1DF8DF452A9296C0008EA537 /* Album.swift in Sources */,

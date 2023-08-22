@@ -14,7 +14,7 @@ struct ContentView: View {
     var body: some View {
         Group{
             if authenticationViewModel.userSession !=  nil{
-                AlbumListView()
+                MainView()
             } else {
                 LoginView()
             }
