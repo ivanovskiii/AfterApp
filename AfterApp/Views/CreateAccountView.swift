@@ -90,7 +90,7 @@ struct CreateAccountView: View {
                 //Create Account Button
                 Button{
                     Task{
-                        try await authenticationViewModel.createAccount(name: email, surname: surname, withEmail: email, password: password)
+                        try await authenticationViewModel.createAccount(name: name, surname: surname, withEmail: email, password: password)
                     }
                 } label: {
                     Text("Create Account")
