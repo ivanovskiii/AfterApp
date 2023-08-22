@@ -13,11 +13,13 @@ struct MainView: View {
             AlbumListView(albumListViewModel: AlbumListViewModel())
                 .tabItem {
                     Label("Rolls", systemImage: "film.stack")
+                        
                 }
             
             ProfileView()
                 .tabItem {
                     Label("Profile", systemImage: "person")
+                        .fontWidth(.expanded)
                 }
 
         }

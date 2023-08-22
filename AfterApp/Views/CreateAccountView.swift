@@ -27,11 +27,13 @@ struct CreateAccountView: View {
                 Text("Create New Account")
                     .foregroundColor(Color("AfterBeige"))
                     .font(.headline)
+                    .fontWidth(.expanded)
                 
                 TextField("Name", text: $name, prompt: Text("Name").foregroundColor(Color("AfterBeige")))
                     .foregroundColor(Color("AfterBeige"))
                     .autocorrectionDisabled(true)
                     .padding(10)
+                    .fontWidth(.expanded)
                     .frame(height: 55)
                     .overlay{
                         RoundedRectangle(cornerRadius: 10)
@@ -43,6 +45,7 @@ struct CreateAccountView: View {
                     .foregroundColor(Color("AfterBeige"))
                     .autocorrectionDisabled(true)
                     .padding(10)
+                    .fontWidth(.expanded)
                     .frame(height: 55)
                     .overlay{
                         RoundedRectangle(cornerRadius: 10)
@@ -55,6 +58,7 @@ struct CreateAccountView: View {
                     .autocorrectionDisabled(true)
                     .textInputAutocapitalization(.never)
                     .padding(10)
+                    .fontWidth(.expanded)
                     .frame(height: 55)
                     .overlay{
                         RoundedRectangle(cornerRadius: 10)
@@ -70,16 +74,19 @@ struct CreateAccountView: View {
                                       prompt: Text("Password").foregroundColor(Color("AfterBeige")))
                             .foregroundColor(Color("AfterBeige"))
                             .frame(height: 55)
+                            .fontWidth(.expanded)
                         } else{
                             SecureField("Password",
                                         text: $password,
                                         prompt: Text("Password").foregroundColor(Color("AfterBeige"))).foregroundColor(Color("AfterBeige"))
                                 .frame(height: 35)
+                                .fontWidth(.expanded)
                             
                         }
                     }
                 }
                 .padding(10)
+                .fontWidth(.expanded)
                 .overlay {
                     RoundedRectangle(cornerRadius: 10)
                         .stroke(Color("AfterBeige"), lineWidth: 2)
@@ -95,6 +102,7 @@ struct CreateAccountView: View {
                 } label: {
                     Text("Create Account")
                         .font(.headline)
+                        .fontWidth(.expanded)
                         .foregroundColor(Color("AfterDarkGray"))
                         .frame(height: 55)
                         .frame(maxWidth: .infinity)
@@ -102,6 +110,7 @@ struct CreateAccountView: View {
                         .cornerRadius(10)
                 }
                 .padding(.horizontal)
+                .padding(.bottom, 30)
             }.background{
 //                RiveViewModel(fileName: "after_start_animation")
 //                    .view()

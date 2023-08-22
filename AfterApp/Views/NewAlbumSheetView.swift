@@ -20,11 +20,19 @@ struct NewAlbumSheetView: View {
         
         VStack{
             
+            Text("New Roll")
+                .foregroundColor(Color("AfterBeige"))
+                .font(Font.custom("Shrikhand-Regular", size: 24))
+            
+            
+            Spacer()
+            
             TextField("Roll Name", text: $albumName, prompt: Text("Roll Name").foregroundColor(Color("AfterBeige")))
                 .foregroundColor(Color("AfterBeige"))
                 .autocorrectionDisabled(true)
                 .padding(10)
                 .frame(height: 55)
+                .fontWidth(.expanded)
                 .overlay{
                     RoundedRectangle(cornerRadius: 10)
                         .stroke(.white, lineWidth: 2)
@@ -33,12 +41,14 @@ struct NewAlbumSheetView: View {
             Toggle("Private Roll", isOn: $isPrivate)
                 .frame(height: 55)
                 .foregroundColor(Color("AfterBeige"))
+                .fontWidth(.expanded)
             
-            Text("Toggling \"Private Roll\" will prevent other users from seeing it")
-                .font(.footnote)
+            Text("Toggling \"Private Roll\" will prevent other users from seeing it on your profile. You can change this option later.")
+                .font(.caption)
                 .foregroundColor(Color("AfterBeige"))
             
-            Divider()
+            
+            Spacer()
             
             Button() {
                 let album = Album(user: authenticationViewModel.currentUser!, name: albumName, isLocked: true, unlockTime: Date().addingTimeInterval(12 * 3600), isPrivate: isPrivate)
@@ -48,9 +58,8 @@ struct NewAlbumSheetView: View {
                 print("DEBUG:", album)
                 dismiss()
             } label: {
-                VStack(alignment: .center, spacing: 10){
-                    Text("Save Roll")
-                }
+                Text("Create New Roll")
+                    .fontWidth(.expanded)
             }.font(.headline)
                 .foregroundColor(Color("AfterDarkGray"))
                 .frame(height: 55)
@@ -59,6 +68,7 @@ struct NewAlbumSheetView: View {
                 .cornerRadius(10)
         }.frame(maxHeight: .infinity, alignment: .center)
             .padding()
+            .padding(.bottom, 30)
         .background(Color("AfterDarkGray"))
 
     }

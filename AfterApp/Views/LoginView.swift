@@ -28,12 +28,14 @@ struct LoginView: View {
                     Text("Sign In")
                         .foregroundColor(Color("AfterBeige"))
                         .font(.headline)
+                        .fontWidth(.expanded)
                     TextField("Email", text: $email, prompt: Text("Email").foregroundColor(Color("AfterBeige")))
                         .foregroundColor(Color("AfterBeige"))
                         .autocorrectionDisabled(true)
                         .textInputAutocapitalization(.never)
                         .padding(10)
                         .frame(height: 55)
+                        .fontWidth(.expanded)
                         .overlay{
                             RoundedRectangle(cornerRadius: 10)
                                 .stroke(.white, lineWidth: 2)
@@ -47,11 +49,13 @@ struct LoginView: View {
                                           prompt: Text("Password").foregroundColor(Color("AfterBeige")))
                                 .foregroundColor(Color("AfterBeige"))
                                 .frame(height: 55)
+                                .fontWidth(.expanded)
                             } else{
                                 SecureField("Password",
                                             text: $password,
                                             prompt: Text("Password").foregroundColor(Color("AfterBeige"))).foregroundColor(Color("AfterBeige"))
                                     .frame(height: 35)
+                                    .fontWidth(.expanded)
                                 
                             }
                         }
@@ -73,6 +77,7 @@ struct LoginView: View {
                     } label: {
                         Text("Sign In")
                             .font(.headline)
+                            .fontWidth(.expanded)
                             .foregroundColor(Color("AfterDarkGray"))
                             .frame(height: 55)
                             .frame(maxWidth: .infinity)
@@ -87,6 +92,7 @@ struct LoginView: View {
                     } label: {
                         Text("Create Account")
                             .font(.headline)
+                            .fontWidth(.expanded)
                             .foregroundColor(Color("AfterBeige"))
                             .frame(height: 55)
                             .frame(maxWidth: .infinity)
@@ -97,11 +103,15 @@ struct LoginView: View {
                             }
                     }
                     .padding(.horizontal)
+                    .padding(.bottom, 30)
                 }.background{
-                    RiveViewModel(fileName: "after_start_animation")
-                        .view()
-                        .padding(.bottom, 400)
-                        .opacity(0.2)
+                    VStack{
+                        RiveViewModel(fileName: "after_start_animation")
+                            .view()
+                            .padding(.bottom, 450)
+                            .frame(width: 400)
+                            .opacity(0.3)
+                    }
                         
                 }
             .background(Color("AfterDarkGray"))

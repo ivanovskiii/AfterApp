@@ -16,20 +16,24 @@ struct ProfileView: View {
             Image("AfterLogo")
                 .resizable()
                 .scaledToFit()
-                .frame(width: 120)
+                .frame(width: 100)
                 .frame(maxWidth: .infinity, alignment: .top)
+                .padding(.top, 5)
             
-            Spacer()
+            Image(systemName: "person.circle.fill")
+                .resizable()
+                .scaledToFit()
+                .frame(width: 100)
+                .foregroundColor(Color("AfterBeige"))
+                .padding(.top, 30)
             
             Text("Hey, \(authenticationViewModel.currentUser?.name ?? "Name") \(authenticationViewModel.currentUser?.surname ?? "Surname")!")
                 .foregroundColor(Color("AfterBeige"))
-                .font(.headline)
+                .font(Font.custom("Shrikhand-Regular", size: 24))
             
-            Text("Email:")
+            Text("Email: \(authenticationViewModel.currentUser?.email ?? "Email")")
                 .foregroundColor(Color("AfterBeige"))
-                .font(.headline)
-            Text(authenticationViewModel.userSession?.email ?? "Email")
-                .foregroundColor(Color("AfterBeige"))
+                .fontWidth(.expanded)
             
             Spacer()
             
@@ -43,8 +47,10 @@ struct ProfileView: View {
                     .frame(maxWidth: .infinity)
                     .background(Color("AfterBeige"))
                     .cornerRadius(10)
+                    .fontWidth(.expanded)
             }
             .padding(.horizontal)
+            .padding(.bottom, 30)
             
         }
         .frame(maxHeight: .infinity, alignment: .top)

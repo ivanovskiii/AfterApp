@@ -23,17 +23,18 @@ struct AlbumListView: View {
             Image("AfterLogo")
                 .resizable()
                 .scaledToFit()
-                .frame(width: 120)
+                .frame(width: 100)
                 .frame(maxWidth: .infinity, alignment: .top)
+                .padding(.top, 5)
             
             ScrollView {
                 LazyVGrid(columns: columns, spacing: 16) {
                     Button() {
                         isShowingAlbumAddSheet.toggle()
                     } label: {
-                        VStack(alignment: .center, spacing: 10){
+                        VStack(alignment: .center, spacing: 1){
                             Text("New Roll")
-                                .font(Font.custom("Shrikhand-Regular", size: 18))
+                                .font(Font.custom("Shrikhand-Regular", size: 24))
                             Image(systemName: "plus.circle")
                         }
                     }
@@ -47,7 +48,7 @@ struct AlbumListView: View {
                     ForEach(albumListViewModel.albums) { album in
                         if (album.user.id == authenticationViewModel.currentUser?.id){
                             Text(album.name)
-                                .font(Font.custom("Shrikhand-Regular", size: 18))
+                                .font(Font.custom("Shrikhand-Regular", size: 24))
                                 .frame(maxWidth: .infinity, minHeight: 180)
                                 .background(Color.gray)
                                 .cornerRadius(20)
