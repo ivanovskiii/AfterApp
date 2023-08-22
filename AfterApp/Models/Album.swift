@@ -11,10 +11,11 @@ import Foundation
 
 struct Album: Identifiable, Codable {
     @DocumentID var id: String?
-//    var user: User
+    var user: User
     var name: String
 //    var photos: [Photo]
     var isLocked: Bool
     var unlockTime: Date
+    var isPrivate: Bool
 }
  

@@ -12,7 +12,7 @@ struct MainView: View {
         TabView {
             AlbumListView(albumListViewModel: AlbumListViewModel())
                 .tabItem {
-                    Label("Albums", systemImage: "film")
+                    Label("Rolls", systemImage: "film.stack")
                 }
             
             ProfileView()
