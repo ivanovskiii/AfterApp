@@ -19,49 +19,55 @@ struct AlbumListView: View {
     
     var body: some View {
         
-        VStack(alignment: .center, spacing: 15) {
-            Image("AfterLogo")
-                .resizable()
-                .scaledToFit()
-                .frame(width: 100)
-                .frame(maxWidth: .infinity, alignment: .top)
-                .padding(.top, 5)
-            
-            ScrollView {
-                LazyVGrid(columns: columns, spacing: 16) {
-                    Button() {
-                        isShowingAlbumAddSheet.toggle()
-                    } label: {
-                        VStack(alignment: .center, spacing: 1){
-                            Text("New Roll")
-                                .font(Font.custom("Shrikhand-Regular", size: 24))
-                            Image(systemName: "plus.circle")
+        NavigationStack {
+            VStack(alignment: .center){
+                VStack(alignment: .center, spacing: 15) {
+                Image("AfterLogo")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 100)
+                    .frame(maxWidth: .infinity, alignment: .top)
+                    .padding(.top, 5)
+            }
+                
+                ScrollView {
+                    LazyVGrid(columns: columns, spacing: 16) {
+                        Button() {
+                            isShowingAlbumAddSheet.toggle()
+                        } label: {
+                            VStack(alignment: .center, spacing: 1){
+                                Text("New Roll")
+                                    .font(Font.custom("Shrikhand-Regular", size: 24))
+                                Image(systemName: "plus.circle")
+                            }
+                        }
+                        .sheet(isPresented: $isShowingAlbumAddSheet){
+                            NewAlbumSheetView(albumListViewModel: AlbumListViewModel())
+                        }
+                        .frame(maxWidth: .infinity, minHeight: 180)
+                        .background(Color.gray)
+                        .cornerRadius(20)
+                        .shadow(radius: 20)
+                        ForEach(albumListViewModel.albums) { album in
+                            if (album.user.id == authenticationViewModel.currentUser?.id){
+                                NavigationLink(destination: AlbumView(album: album), label: {
+                                    Text(album.name)
+                                        .font(Font.custom("Shrikhand-Regular", size: 24))
+                                        .frame(maxWidth: .infinity, minHeight: 180)
+                                        .background(Color.gray)
+                                        .cornerRadius(20)
+                                        .shadow(radius: 20)
+                                })
+                            }
                         }
                     }
-                    .sheet(isPresented: $isShowingAlbumAddSheet){
-                        NewAlbumSheetView(albumListViewModel: AlbumListViewModel())
-                    }
-                    .frame(maxWidth: .infinity, minHeight: 180)
-                    .background(Color.gray)
-                    .cornerRadius(20)
-                    .shadow(radius: 20)
-                    ForEach(albumListViewModel.albums) { album in
-                        if (album.user.id == authenticationViewModel.currentUser?.id){
-                            Text(album.name)
-                                .font(Font.custom("Shrikhand-Regular", size: 24))
-                                .frame(maxWidth: .infinity, minHeight: 180)
-                                .background(Color.gray)
-                                .cornerRadius(20)
-                                .shadow(radius: 20)
-                        }
-                    }
-                }
-                .padding()
-            }.preferredColorScheme(.dark)
-            
-        }
-        .frame(maxHeight: .infinity, alignment: .top)
+                    .padding()
+                }.preferredColorScheme(.dark)
+                
+            }
+            .frame(maxHeight: .infinity, alignment: .top)
         .background(Color("AfterDarkGray"))
+        }
     }
 }
 

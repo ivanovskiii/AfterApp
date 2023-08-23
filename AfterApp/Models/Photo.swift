@@ -7,8 +7,10 @@
 
 import Foundation
 import UIKit
+import FirebaseFirestoreSwift
+import FirebaseFirestore
 
-struct Photo: Identifiable{
-    var id = UUID()
-    var image: UIImage
+struct Photo: Identifiable, Codable{
+    var id: String
+    var imageURL: String
 }

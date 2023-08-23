@@ -16,9 +16,14 @@ struct MainView: View {
                         
                 }
             
+            FriendsView()
+                .tabItem {
+                    Label("Friends", systemImage: "person.3")
+                }
+            
             ProfileView()
                 .tabItem {
-                    Label("Profile", systemImage: "person")
+                    Label("Profile", systemImage: "person.circle")
                         .fontWidth(.expanded)
                 }
 

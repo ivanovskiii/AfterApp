@@ -11,6 +11,9 @@
 		1D1C9AE52A94C23600A667F7 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D1C9AE42A94C23600A667F7 /* MainView.swift */; };
 		1D1C9AE72A94C2E200A667F7 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D1C9AE62A94C2E200A667F7 /* ProfileView.swift */; };
 		1D33A3BD2A0074280023FC56 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D33A3BC2A0074280023FC56 /* LoginView.swift */; };
+		1D4166242A9617BA00BE9A01 /* FriendsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D4166232A9617BA00BE9A01 /* FriendsView.swift */; };
+		1D4166282A96272400BE9A01 /* AlbumView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D4166272A96272400BE9A01 /* AlbumView.swift */; };
+		1D41662C2A96423100BE9A01 /* AlbumViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D41662B2A96423100BE9A01 /* AlbumViewModel.swift */; };
 		1D5C20B82A94EA3700BE762B /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D5C20B72A94EA3700BE762B /* User.swift */; };
 		1D5C20BA2A953EEB00BE762B /* NewAlbumSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D5C20B92A953EEB00BE762B /* NewAlbumSheetView.swift */; };
 		1D5C20BE2A95478F00BE762B /* Shrikhand-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1D5C20BD2A95478F00BE762B /* Shrikhand-Regular.ttf */; };
@@ -67,6 +70,9 @@
 		1D1C9AE42A94C23600A667F7 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		1D1C9AE62A94C2E200A667F7 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		1D33A3BC2A0074280023FC56 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		1D4166232A9617BA00BE9A01 /* FriendsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsView.swift; sourceTree = "<group>"; };
+		1D4166272A96272400BE9A01 /* AlbumView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumView.swift; sourceTree = "<group>"; };
+		1D41662B2A96423100BE9A01 /* AlbumViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumViewModel.swift; sourceTree = "<group>"; };
 		1D5C20B72A94EA3700BE762B /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		1D5C20B92A953EEB00BE762B /* NewAlbumSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewAlbumSheetView.swift; sourceTree = "<group>"; };
 		1D5C20BD2A95478F00BE762B /* Shrikhand-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Shrikhand-Regular.ttf"; sourceTree = "<group>"; };
@@ -222,6 +228,7 @@
 			children = (
 				1DF8DF562A92A3A0008EA537 /* AlbumListViewModel.swift */,
 				1DF8DF5E2A92BF07008EA537 /* AuthenticationViewModel.swift */,
+				1D41662B2A96423100BE9A01 /* AlbumViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -236,6 +243,8 @@
 				1D1C9AE42A94C23600A667F7 /* MainView.swift */,
 				1D1C9AE62A94C2E200A667F7 /* ProfileView.swift */,
 				1D5C20B92A953EEB00BE762B /* NewAlbumSheetView.swift */,
+				1D4166232A9617BA00BE9A01 /* FriendsView.swift */,
+				1D4166272A96272400BE9A01 /* AlbumView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -395,12 +404,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1D4166242A9617BA00BE9A01 /* FriendsView.swift in Sources */,
 				1D5C20B82A94EA3700BE762B /* User.swift in Sources */,
 				1DF8DF432A92967E008EA537 /* Photo.swift in Sources */,
 				1D33A3BD2A0074280023FC56 /* LoginView.swift in Sources */,
 				1DB0345929FF0E39008AB429 /* AlbumListView.swift in Sources */,
 				1DB2B7882A939CB200413B9B /* CreateAccountView.swift in Sources */,
+				1D4166282A96272400BE9A01 /* AlbumView.swift in Sources */,
 				1D1C9AE72A94C2E200A667F7 /* ProfileView.swift in Sources */,
+				1D41662C2A96423100BE9A01 /* AlbumViewModel.swift in Sources */,
 				1DF8DF532A92A0FC008EA537 /* AlbumRepository.swift in Sources */,
 				1DF8DF5F2A92BF07008EA537 /* AuthenticationViewModel.swift in Sources */,
 				1D0C905F2A93DB740095C691 /* ContentView.swift in Sources */,
