@@ -10,7 +10,14 @@ import SwiftUI
 struct MainView: View {
     var body: some View {
         TabView {
-            AlbumListView(albumListViewModel: AlbumListViewModel())
+            AlbumListView(albumListViewModel: AlbumListViewModel(), albumViewModel: AlbumViewModel(),  album: Album(
+                user: User(id: "1", name: "John", surname: "Doe", email: "john@mail.com"),
+                name: "Sample Album",
+                photos: [Photo(id: "1", imageURL: "bbb")],
+                isLocked: false,
+                unlockTime: Date().addingTimeInterval(12 * 3600),
+                isPrivate: false
+            ))
                 .tabItem {
                     Label("Rolls", systemImage: "film.stack")
                         

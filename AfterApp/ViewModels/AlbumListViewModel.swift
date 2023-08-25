@@ -22,4 +22,8 @@ final class AlbumListViewModel: ObservableObject{
     func add (_ album: Album){
         albumRepository.add(album)
     }
+    
+    func delete(_ album: Album) {
+            albumRepository.delete(album)
+    }
 }

@@ -1,34 +1,25 @@
-//
-//  ContentView.swift
-//  AfterApp
-//
-//  Created by Gorjan Ivanovski on 30.4.23.
-//
-
 import SwiftUI
-import FirebaseFirestore
-import FirebaseFirestoreSwift
-import Firebase
 
 struct AlbumListView: View {
-    @ObservedObject var albumListViewModel: AlbumListViewModel    
+    @ObservedObject var albumListViewModel: AlbumListViewModel
     @EnvironmentObject var authenticationViewModel: AuthenticationViewModel
     @State private var isShowingAlbumAddSheet = false
+    @ObservedObject var albumViewModel: AlbumViewModel
+    let album: Album
     
     let columns: [GridItem] = Array(repeating: GridItem(.flexible(), spacing: 16), count: 2)
     
     var body: some View {
-        
         NavigationStack {
-            VStack(alignment: .center){
+            VStack(alignment: .center) {
                 VStack(alignment: .center, spacing: 15) {
-                Image("AfterLogo")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 100)
-                    .frame(maxWidth: .infinity, alignment: .top)
-                    .padding(.top, 5)
-            }
+                    Image("AfterLogo")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 100)
+                        .frame(maxWidth: .infinity, alignment: .top)
+                        .padding(.top, 5)
+                }
                 
                 ScrollView {
                     LazyVGrid(columns: columns, spacing: 16) {
@@ -48,25 +39,43 @@ struct AlbumListView: View {
                         .background(Color.gray)
                         .cornerRadius(20)
                         .shadow(radius: 20)
+                        
                         ForEach(albumListViewModel.albums) { album in
-                            if (album.user.id == authenticationViewModel.currentUser?.id){
+                            if (album.user.id == authenticationViewModel.currentUser?.id) {
                                 NavigationLink(destination: AlbumView(album: album), label: {
-                                    Text(album.name)
-                                        .font(Font.custom("Shrikhand-Regular", size: 24))
-                                        .frame(maxWidth: .infinity, minHeight: 180)
-                                        .background(Color.gray)
-                                        .cornerRadius(20)
-                                        .shadow(radius: 20)
+                                    ZStack {
+                                        let unlockedStatus = albumViewModel.checkUnlocked()
+                                        if let firstImageURL = album.getFirstImageURL() {
+                                            AlbumBackgroundView(imageURL: firstImageURL, isUnlocked: unlockedStatus)
+                                        } else {
+                                            Color.gray
+                                                .cornerRadius(20)
+                                        }
+                                        Text(album.name)
+                                            .font(Font.custom("Shrikhand-Regular", size: 24))
+                                            .frame(maxWidth: .infinity, minHeight: 180)
+                                            .foregroundColor(Color("AfterBeige"))
+                                            .cornerRadius(20)
+                                            .shadow(radius: 20)
+                                    }
                                 })
+                                .contextMenu {
+                                    Button(action: {
+                                        albumListViewModel.delete(album)
+                                    }) {
+                                        Label("Delete \(album.name)", systemImage: "trash")
+                                    }
+                                    .foregroundColor(.red)
+                                }
                             }
                         }
                     }
                     .padding()
-                }.preferredColorScheme(.dark)
-                
+                }
+                .preferredColorScheme(.dark)
             }
             .frame(maxHeight: .infinity, alignment: .top)
-        .background(Color("AfterDarkGray"))
+            .background(Color("AfterDarkGray"))
         }
     }
 }
@@ -74,7 +83,39 @@ struct AlbumListView: View {
 
 struct AlbumListView_Previews: PreviewProvider {
     static var previews: some View {
-        AlbumListView(albumListViewModel: AlbumListViewModel())
+        AlbumListView(albumListViewModel: AlbumListViewModel(), albumViewModel: AlbumViewModel(), album: Album(
+            user: User(id: "1", name: "John", surname: "Doe", email: "john@mail.com"),
+            name: "Sample Album",
+            photos: [Photo(id: "1", imageURL: "bbb")],
+            isLocked: false,
+            unlockTime: Date().addingTimeInterval(12 * 3600),
+            isPrivate: false
+        ))
             .environmentObject(AuthenticationViewModel())
     }
 }
+
+struct AlbumBackgroundView: View {
+    let imageURL: String
+    let isUnlocked: Bool
+    
+    var body: some View {
+        AsyncImage(url: URL(string: imageURL)) { image in
+            image
+                .resizable()
+                .aspectRatio(contentMode: .fill)
+                .cornerRadius(20)
+                .blur(radius: 10)
+                .saturation(isUnlocked ? 1.0 : 0.0)
+                .overlay(Color.black.opacity(0.3))
+        } placeholder: {
+            VStack{
+                Color.gray
+            }
+        }
+        .frame(height: 180)
+        .cornerRadius(20)
+    }
+}
+
+

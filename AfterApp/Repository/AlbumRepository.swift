@@ -38,4 +38,14 @@ final class AlbumRepository: ObservableObject{
         }
     }
     
+    func delete(_ album: Album) {
+            if let documentId = album.id {
+                store.collection("albums").document(documentId).delete() { error in
+                    if let error = error {
+                        print("Error deleting album: \(error)")
+                    }
+                }
+            }
+        }
+    
 }

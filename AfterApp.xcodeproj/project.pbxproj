@@ -29,6 +29,9 @@
 		1DB0347229FF0E3B008AB429 /* AfterAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DB0347129FF0E3B008AB429 /* AfterAppUITests.swift */; };
 		1DB0347429FF0E3B008AB429 /* AfterAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DB0347329FF0E3B008AB429 /* AfterAppUITestsLaunchTests.swift */; };
 		1DB2B7882A939CB200413B9B /* CreateAccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DB2B7872A939CB200413B9B /* CreateAccountView.swift */; };
+		1DB5E1092A98D1B200426A7E /* PhotoRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DB5E1082A98D1B200426A7E /* PhotoRepository.swift */; };
+		1DB5E10C2A98D2B300426A7E /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 1DB5E10B2A98D2B300426A7E /* FirebaseStorage */; };
+		1DB5E10E2A98D83100426A7E /* CapturePhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DB5E10D2A98D83100426A7E /* CapturePhotoView.swift */; };
 		1DF8DF432A92967E008EA537 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF8DF422A92967E008EA537 /* Photo.swift */; };
 		1DF8DF452A9296C0008EA537 /* Album.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF8DF442A9296C0008EA537 /* Album.swift */; };
 		1DF8DF472A929B3B008EA537 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1DF8DF462A929B3B008EA537 /* GoogleService-Info.plist */; };
@@ -89,6 +92,8 @@
 		1DB0347129FF0E3B008AB429 /* AfterAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AfterAppUITests.swift; sourceTree = "<group>"; };
 		1DB0347329FF0E3B008AB429 /* AfterAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AfterAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		1DB2B7872A939CB200413B9B /* CreateAccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountView.swift; sourceTree = "<group>"; };
+		1DB5E1082A98D1B200426A7E /* PhotoRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoRepository.swift; sourceTree = "<group>"; };
+		1DB5E10D2A98D83100426A7E /* CapturePhotoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturePhotoView.swift; sourceTree = "<group>"; };
 		1DF8DF422A92967E008EA537 /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
 		1DF8DF442A9296C0008EA537 /* Album.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Album.swift; sourceTree = "<group>"; };
 		1DF8DF462A929B3B008EA537 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -105,6 +110,7 @@
 				1DF8DF4C2A929CAE008EA537 /* FirebaseAuth in Frameworks */,
 				1D958B2B2A938B690079CE2E /* RiveRuntime in Frameworks */,
 				1DF8DF4E2A929CAE008EA537 /* FirebaseFirestore in Frameworks */,
+				1DB5E10C2A98D2B300426A7E /* FirebaseStorage in Frameworks */,
 				1DF8DF502A929CAE008EA537 /* FirebaseFirestoreSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -159,6 +165,7 @@
 				1DB0346629FF0E3B008AB429 /* AfterAppTests */,
 				1DB0347029FF0E3B008AB429 /* AfterAppUITests */,
 				1DB0345429FF0E39008AB429 /* Products */,
+				1DB5E10A2A98D2B300426A7E /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -176,10 +183,11 @@
 			isa = PBXGroup;
 			children = (
 				1D5C20C02A9547D600BE762B /* Info.plist */,
+				1DB5E1052A98AFAA00426A7E /* UIViewRepresentables */,
 				1DF8DF512A92A0EC008EA537 /* Repository */,
+				1DF8DF3E2A92945B008EA537 /* Models */,
 				1DF8DF402A929478008EA537 /* Views */,
 				1DF8DF3F2A929472008EA537 /* ViewModels */,
-				1DF8DF3E2A92945B008EA537 /* Models */,
 				1DF8DF462A929B3B008EA537 /* GoogleService-Info.plist */,
 				1DB0345629FF0E39008AB429 /* AfterAppApp.swift */,
 				1DB0345A29FF0E3B008AB429 /* Assets.xcassets */,
@@ -211,6 +219,21 @@
 				1DB0347329FF0E3B008AB429 /* AfterAppUITestsLaunchTests.swift */,
 			);
 			path = AfterAppUITests;
+			sourceTree = "<group>";
+		};
+		1DB5E1052A98AFAA00426A7E /* UIViewRepresentables */ = {
+			isa = PBXGroup;
+			children = (
+				1DB5E10D2A98D83100426A7E /* CapturePhotoView.swift */,
+			);
+			path = UIViewRepresentables;
+			sourceTree = "<group>";
+		};
+		1DB5E10A2A98D2B300426A7E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		1DF8DF3E2A92945B008EA537 /* Models */ = {
@@ -253,6 +276,7 @@
 			isa = PBXGroup;
 			children = (
 				1DF8DF522A92A0FC008EA537 /* AlbumRepository.swift */,
+				1DB5E1082A98D1B200426A7E /* PhotoRepository.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -278,6 +302,7 @@
 				1DF8DF4D2A929CAE008EA537 /* FirebaseFirestore */,
 				1DF8DF4F2A929CAE008EA537 /* FirebaseFirestoreSwift */,
 				1D958B2A2A938B690079CE2E /* RiveRuntime */,
+				1DB5E10B2A98D2B300426A7E /* FirebaseStorage */,
 			);
 			productName = AfterApp;
 			productReference = 1DB0345329FF0E39008AB429 /* AfterApp.app */;
@@ -413,6 +438,8 @@
 				1D4166282A96272400BE9A01 /* AlbumView.swift in Sources */,
 				1D1C9AE72A94C2E200A667F7 /* ProfileView.swift in Sources */,
 				1D41662C2A96423100BE9A01 /* AlbumViewModel.swift in Sources */,
+				1DB5E1092A98D1B200426A7E /* PhotoRepository.swift in Sources */,
+				1DB5E10E2A98D83100426A7E /* CapturePhotoView.swift in Sources */,
 				1DF8DF532A92A0FC008EA537 /* AlbumRepository.swift in Sources */,
 				1DF8DF5F2A92BF07008EA537 /* AuthenticationViewModel.swift in Sources */,
 				1D0C905F2A93DB740095C691 /* ContentView.swift in Sources */,
@@ -591,11 +618,12 @@
 				INFOPLIST_FILE = AfterApp/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = After;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.photography";
+				INFOPLIST_KEY_NSCameraUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleDarkContent;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -623,11 +651,12 @@
 				INFOPLIST_FILE = AfterApp/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = After;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.photography";
+				INFOPLIST_KEY_NSCameraUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleDarkContent;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -782,6 +811,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 1D958B292A938B690079CE2E /* XCRemoteSwiftPackageReference "rive-ios" */;
 			productName = RiveRuntime;
+		};
+		1DB5E10B2A98D2B300426A7E /* FirebaseStorage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1DF8DF4A2A929CAE008EA537 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseStorage;
 		};
 		1DF8DF4B2A929CAE008EA537 /* FirebaseAuth */ = {
 			isa = XCSwiftPackageProductDependency;
