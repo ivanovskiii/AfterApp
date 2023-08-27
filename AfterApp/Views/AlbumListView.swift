@@ -53,16 +53,16 @@ struct AlbumListView: View {
                                                 .frame(height: 180)
                                         }
                                         VStack{
-                                            if album.isLocked {
-                                                Image(systemName: "lock.fill")
-                                                    .foregroundColor(Color("AfterBeige"))
-                                            }
                                             Text(album.name)
                                                 .font(Font.custom("Shrikhand-Regular", size: 24))
 //                                                .frame(maxWidth: .infinity, maxHeight: .infinity)
                                                 .foregroundColor(Color("AfterBeige"))
                                                 .cornerRadius(20)
                                                 .shadow(radius: 20)
+                                            if album.isLocked {
+                                                Image(systemName: "lock.fill")
+                                                    .foregroundColor(Color("AfterBeige"))
+                                            }
                                         }
                                     }
                                 })
