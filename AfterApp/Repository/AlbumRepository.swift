@@ -48,4 +48,14 @@ final class AlbumRepository: ObservableObject{
             }
         }
     
+    func updateAlbum(_ album: Album) throws {
+        do {
+            try store.collection(path).document(album.id!).setData(from: album)
+            print("Album updated successfully!")
+        } catch {
+            throw error
+        }
+    }
+
+    
 }

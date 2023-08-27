@@ -24,20 +24,7 @@ struct AlbumView: View {
             
             VStack {
                 
-                if albumViewModel.checkUnlocked() {
-                    
-                    ScrollView {
-                        LazyVGrid(columns: [GridItem(.flexible(), spacing: 10), GridItem(.flexible(), spacing: 10)], spacing: 10) {
-                            ForEach(album.photos, id: \.id) { photo in
-                                FullScreenImageView(imageURL: photo.imageURL)
-                                    .frame(width: (UIScreen.main.bounds.width - 30 - 10) / 2, height: (UIScreen.main.bounds.width - 30 - 10) / 2)
-                                    .cornerRadius(10)
-                            }
-                        }
-                        .padding(15)
-                    }
-                    
-                } else {
+                if album.isLocked {
                     
                     ZStack {
                         ScrollView {
@@ -55,12 +42,6 @@ struct AlbumView: View {
                         .disabled(true)
 
                         ZStack {
-//                            RoundedRectangle(cornerRadius: 10)
-//                                .foregroundColor(Color.clear)
-//                                .frame(width: (UIScreen.main.bounds.width) / 1.5, height: (UIScreen.main.bounds.width - 10) / 3)
-////                                .frame(height: 200)
-//                                .background(
-//                                    .thinMaterial, in: RoundedRectangle(cornerRadius: 10))
                             VStack {
                                 Spacer()
                                 Image(systemName: "lock.fill")
@@ -110,6 +91,21 @@ struct AlbumView: View {
                             }
                         }
                     }
+                    
+                } else {
+                    
+                    ScrollView {
+                        LazyVGrid(columns: [GridItem(.flexible(), spacing: 10), GridItem(.flexible(), spacing: 10)], spacing: 10) {
+                            ForEach(album.photos, id: \.id) { photo in
+                                FullScreenImageView(imageURL: photo.imageURL)
+                                    .frame(width: (UIScreen.main.bounds.width - 30 - 10) / 2, height: (UIScreen.main.bounds.width - 30 - 10) / 2)
+                                    .cornerRadius(10)
+                            }
+                        }
+                        .padding(15)
+                    }
+                    
+                    
                 }
             }
         }
@@ -122,6 +118,9 @@ struct AlbumView: View {
         .background(Color("AfterDarkGray"))
         .onAppear {
             albumViewModel.selectedAlbum = album
+            Task {
+                await albumViewModel.checkAndUpdateLockStatus()
+            }
         }
         
     }
@@ -137,7 +136,8 @@ struct AlbumView_Previews: PreviewProvider {
             photos: [Photo(id: "1", imageURL: "bbb")],
             isLocked: false,
             unlockTime: Date().addingTimeInterval(12 * 3600),
-            isPrivate: false
+            isPrivate: false,
+            creationDate: Date()
         )
         )
     }
@@ -181,12 +181,6 @@ struct FullScreenImageViewer: View {
             } placeholder: {
                 ProgressView()
             }
-            .gesture(
-                DragGesture(minimumDistance: 0, coordinateSpace: .global)
-                    .onChanged { value in
-                        // Handle panning gesture for image
-                    }
-            )
         }
         .onTapGesture {
             isPresented.toggle()

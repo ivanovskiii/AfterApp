@@ -23,16 +23,22 @@ class AlbumViewModel: ObservableObject{
         self.showCamera = false
     }
     
-    func checkUnlocked() -> Bool{
-        guard let album = selectedAlbum else {
-            return false
+    func checkAndUpdateLockStatus() async {
+            guard let album = selectedAlbum else {
+                return
+            }
+
+            if album.isLocked && Date() >= album.unlockTime {
+                var updatedAlbum = album
+                updatedAlbum.isLocked = false
+                
+                do {
+                    try albumRepository.updateAlbum(updatedAlbum)
+                } catch {
+                    print("Error updating album lock status: \(error)")
+                }
+            }
         }
-               
-        let currentTime = Date()
-        print("DEBUG: Checking unlocked status.")
-        print(album.isLocked && currentTime >= album.unlockTime)
-        return album.isLocked && currentTime >= album.unlockTime
-    }
     
     func captureAndUploadPhoto() {
         guard let selectedAlbum = selectedAlbum, let photo = capturedPhoto else {

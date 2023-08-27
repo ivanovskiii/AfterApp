@@ -40,23 +40,30 @@ struct AlbumListView: View {
                         .cornerRadius(20)
                         .shadow(radius: 20)
                         
-                        ForEach(albumListViewModel.albums) { album in
+                        ForEach(albumListViewModel.albums.sorted(by: { $0.creationDate > $1.creationDate })) { album in
                             if (album.user.id == authenticationViewModel.currentUser?.id) {
                                 NavigationLink(destination: AlbumView(album: album), label: {
                                     ZStack {
-                                        let unlockedStatus = albumViewModel.checkUnlocked()
                                         if let firstImageURL = album.getFirstImageURL() {
-                                            AlbumBackgroundView(imageURL: firstImageURL, isUnlocked: unlockedStatus)
+                                            AlbumBackgroundView(imageURL: firstImageURL, isUnlocked: album.isLocked)
+                                                .frame(height: 180)
                                         } else {
                                             Color.gray
                                                 .cornerRadius(20)
+                                                .frame(height: 180)
                                         }
-                                        Text(album.name)
-                                            .font(Font.custom("Shrikhand-Regular", size: 24))
-                                            .frame(maxWidth: .infinity, minHeight: 180)
-                                            .foregroundColor(Color("AfterBeige"))
-                                            .cornerRadius(20)
-                                            .shadow(radius: 20)
+                                        VStack{
+                                            if album.isLocked {
+                                                Image(systemName: "lock.fill")
+                                                    .foregroundColor(Color("AfterBeige"))
+                                            }
+                                            Text(album.name)
+                                                .font(Font.custom("Shrikhand-Regular", size: 24))
+//                                                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                                                .foregroundColor(Color("AfterBeige"))
+                                                .cornerRadius(20)
+                                                .shadow(radius: 20)
+                                        }
                                     }
                                 })
                                 .contextMenu {
@@ -73,6 +80,11 @@ struct AlbumListView: View {
                     .padding()
                 }
                 .preferredColorScheme(.dark)
+                .onAppear{
+                    Task{
+                        await albumViewModel.checkAndUpdateLockStatus()
+                    }
+                }
             }
             .frame(maxHeight: .infinity, alignment: .top)
             .background(Color("AfterDarkGray"))
@@ -89,7 +101,7 @@ struct AlbumListView_Previews: PreviewProvider {
             photos: [Photo(id: "1", imageURL: "bbb")],
             isLocked: false,
             unlockTime: Date().addingTimeInterval(12 * 3600),
-            isPrivate: false
+            isPrivate: false, creationDate: Date()
         ))
             .environmentObject(AuthenticationViewModel())
     }
@@ -106,7 +118,7 @@ struct AlbumBackgroundView: View {
                 .aspectRatio(contentMode: .fill)
                 .cornerRadius(20)
                 .blur(radius: 10)
-                .saturation(isUnlocked ? 1.0 : 0.0)
+                .saturation(isUnlocked ? 0.0 : 1.0)
                 .overlay(Color.black.opacity(0.3))
         } placeholder: {
             VStack{

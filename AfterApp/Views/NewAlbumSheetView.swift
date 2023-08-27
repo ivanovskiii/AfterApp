@@ -51,7 +51,7 @@ struct NewAlbumSheetView: View {
             Spacer()
             
             Button() {
-                let album = Album(user: authenticationViewModel.currentUser!, name: albumName, photos: [], isLocked: true, unlockTime: Date().addingTimeInterval(12 * 3600), isPrivate: isPrivate)
+                let album = Album(user: authenticationViewModel.currentUser!, name: albumName, photos: [], isLocked: true, unlockTime: Date().addingTimeInterval(12 * 3600), isPrivate: isPrivate, creationDate: Date())
                 albumListViewModel.add(album)
                 let impactMed = UIImpactFeedbackGenerator(style: .heavy)
                     impactMed.impactOccurred()

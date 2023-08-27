@@ -16,7 +16,8 @@ struct MainView: View {
                 photos: [Photo(id: "1", imageURL: "bbb")],
                 isLocked: false,
                 unlockTime: Date().addingTimeInterval(12 * 3600),
-                isPrivate: false
+                isPrivate: false,
+                creationDate: Date()
             ))
                 .tabItem {
                     Label("Rolls", systemImage: "film.stack")
