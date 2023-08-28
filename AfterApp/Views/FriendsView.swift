@@ -8,21 +8,47 @@
 import SwiftUI
 
 struct FriendsView: View {
+    
+    @EnvironmentObject var authenticationViewModel: AuthenticationViewModel
+    @State private var isShowingUserListView = false
+    
     var body: some View {
         VStack(alignment: .center, spacing: 15) {
-            Image("AfterLogo")
-                .resizable()
-                .scaledToFit()
-                .frame(width: 100)
-                .frame(maxWidth: .infinity, alignment: .top)
-                .padding(.top, 5)
             
-            Text("Friends")
-                .padding()
-                .font(Font.custom("Shrikhand-Regular", size: 24))
-                .foregroundColor(Color("AfterBeige"))
+            ZStack {
+                Text("Friends")
+                    .padding()
+                    .font(Font.custom("Shrikhand-Regular", size: 24))
+                    .foregroundColor(Color("AfterBeige"))
+                .padding(.horizontal)
+                
+                Button{
+                    isShowingUserListView.toggle()
+                } label: {
+                    Image(systemName: "person.badge.plus")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 25)
+                }
+                .padding(.leading, 300)
+            }
+            .sheet(isPresented: $isShowingUserListView){
+                UserListView()
+            }
+            
+            if ((authenticationViewModel.currentUser?.friends.isEmpty) != nil){
+                Spacer()
+                Text("It seems a bit lonely here...")
+                    .padding()
+                    .foregroundColor(Color("AfterBeige"))
+                    .fontWidth(.expanded)
+                    .padding(.horizontal)
+                Spacer()
+            }
+
+            
         }
-        .frame(maxHeight: .infinity, alignment: .top)
+        .frame(maxWidth: .infinity, maxHeight: .infinity , alignment: .top)
         .background(Color("AfterDarkGray"))
     }
 }

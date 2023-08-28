@@ -35,18 +35,13 @@ struct NewAlbumSheetView: View {
                 .fontWidth(.expanded)
                 .overlay{
                     RoundedRectangle(cornerRadius: 10)
-                        .stroke(.white, lineWidth: 2)
+                        .stroke(.white, lineWidth: 1)
                 }
             
-            Toggle("Private Roll", isOn: $isPrivate)
+            Toggle("Share With Friends", isOn: $isPrivate)
                 .frame(height: 55)
                 .foregroundColor(Color("AfterBeige"))
                 .fontWidth(.expanded)
-            
-            Text("Toggling \"Private Roll\" will prevent other users from seeing it on your profile. You can change this option later.")
-                .font(.caption)
-                .foregroundColor(Color("AfterBeige"))
-            
             
             Spacer()
             

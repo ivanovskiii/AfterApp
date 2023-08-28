@@ -38,7 +38,7 @@ struct LoginView: View {
                         .fontWidth(.expanded)
                         .overlay{
                             RoundedRectangle(cornerRadius: 10)
-                                .stroke(.white, lineWidth: 2)
+                                .stroke(Color("AfterBeige"), lineWidth: 1)
                         }
                         .padding(.horizontal)
                     
@@ -63,7 +63,7 @@ struct LoginView: View {
                     .padding(10)
                     .overlay {
                         RoundedRectangle(cornerRadius: 10)
-                            .stroke(Color("AfterBeige"), lineWidth: 2)
+                            .stroke(Color("AfterBeige"), lineWidth: 1)
                     }
                     .padding(.horizontal)
                     Spacer()
@@ -126,10 +126,3 @@ struct LoginView_Previews: PreviewProvider {
                 .tint(Color("AfterBeige"))
     }
 }
-
-//Button { // add this new button
-//        showPassword.toggle()
-//    } label: {
-//        Image(systemName: showPassword ? "eye.slash" : "eye")
-//            .foregroundColor(.white)
-//    }

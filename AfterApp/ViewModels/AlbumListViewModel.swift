@@ -19,7 +19,7 @@ final class AlbumListViewModel: ObservableObject{
             .store(in: &cancellables)
     }
 
-    func add (_ album: Album){
+    func add(_ album: Album){
         albumRepository.add(album)
     }
     

@@ -55,7 +55,6 @@ struct AlbumListView: View {
                                         VStack{
                                             Text(album.name)
                                                 .font(Font.custom("Shrikhand-Regular", size: 24))
-//                                                .frame(maxWidth: .infinity, maxHeight: .infinity)
                                                 .foregroundColor(Color("AfterBeige"))
                                                 .cornerRadius(20)
                                                 .shadow(radius: 20)
@@ -96,7 +95,8 @@ struct AlbumListView: View {
 struct AlbumListView_Previews: PreviewProvider {
     static var previews: some View {
         AlbumListView(albumListViewModel: AlbumListViewModel(), albumViewModel: AlbumViewModel(), album: Album(
-            user: User(id: "1", name: "John", surname: "Doe", email: "john@mail.com"),
+            user: User(id: "1", username: "jooohn1", email: "john@mail.com", friends: [],
+                       friendRequests: []),
             name: "Sample Album",
             photos: [Photo(id: "1", imageURL: "bbb")],
             isLocked: false,

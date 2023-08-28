@@ -11,8 +11,7 @@ struct CreateAccountView: View {
     @EnvironmentObject var authenticationViewModel: AuthenticationViewModel
     @State var showPassword: Bool = false
     @State private var isAuthenticated: Bool = false
-    @State var name = ""
-    @State var surname = ""
+    @State var username = ""
     @State var email = ""
     @State var password = ""
     
@@ -29,27 +28,16 @@ struct CreateAccountView: View {
                     .font(.headline)
                     .fontWidth(.expanded)
                 
-                TextField("Name", text: $name, prompt: Text("Name").foregroundColor(Color("AfterBeige")))
+                TextField("Username", text: $username, prompt: Text("Username").foregroundColor(Color("AfterBeige")))
                     .foregroundColor(Color("AfterBeige"))
                     .autocorrectionDisabled(true)
+                    .textInputAutocapitalization(.never)
                     .padding(10)
                     .fontWidth(.expanded)
                     .frame(height: 55)
                     .overlay{
                         RoundedRectangle(cornerRadius: 10)
-                            .stroke(.white, lineWidth: 2)
-                    }
-                    .padding(.horizontal)
-                
-                TextField("Surname", text: $surname, prompt: Text("Surname").foregroundColor(Color("AfterBeige")))
-                    .foregroundColor(Color("AfterBeige"))
-                    .autocorrectionDisabled(true)
-                    .padding(10)
-                    .fontWidth(.expanded)
-                    .frame(height: 55)
-                    .overlay{
-                        RoundedRectangle(cornerRadius: 10)
-                            .stroke(.white, lineWidth: 2)
+                            .stroke(Color("AfterBeige"), lineWidth: 1)
                     }
                     .padding(.horizontal)
                 
@@ -62,7 +50,7 @@ struct CreateAccountView: View {
                     .frame(height: 55)
                     .overlay{
                         RoundedRectangle(cornerRadius: 10)
-                            .stroke(.white, lineWidth: 2)
+                            .stroke(Color("AfterBeige"), lineWidth: 1)
                     }
                     .padding(.horizontal)
                 
@@ -89,7 +77,7 @@ struct CreateAccountView: View {
                 .fontWidth(.expanded)
                 .overlay {
                     RoundedRectangle(cornerRadius: 10)
-                        .stroke(Color("AfterBeige"), lineWidth: 2)
+                        .stroke(Color("AfterBeige"), lineWidth: 1)
                 }
                 .padding(.horizontal)
                 Spacer()
@@ -97,7 +85,7 @@ struct CreateAccountView: View {
                 //Create Account Button
                 Button{
                     Task{
-                        try await authenticationViewModel.createAccount(name: name, surname: surname, withEmail: email, password: password)
+                        try await authenticationViewModel.createAccount(username: username, withEmail: email, password: password, friends: [], friendRequests: [])
                     }
                 } label: {
                     Text("Create Account")
@@ -111,11 +99,6 @@ struct CreateAccountView: View {
                 }
                 .padding(.horizontal)
                 .padding(.bottom, 30)
-            }.background{
-//                RiveViewModel(fileName: "after_start_animation")
-//                    .view()
-//                    .padding(.bottom, 400)
-                    
             }
             .background(Color("AfterDarkGray"))
     }

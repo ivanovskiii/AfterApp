@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import UIKit
 
 struct AlbumView: View {
 
@@ -131,7 +132,8 @@ struct AlbumView_Previews: PreviewProvider {
         
         AlbumView(
             album: Album(
-            user: User(id: "1", name: "John", surname: "Doe", email: "john@mail.com"),
+            user: User(id: "1", username: "joohn1", email: "john@mail.com", friends: [],
+                       friendRequests: []),
             name: "Sample Album",
             photos: [Photo(id: "1", imageURL: "bbb")],
             isLocked: false,
@@ -174,12 +176,24 @@ struct FullScreenImageViewer: View {
         ZStack {
             Color.black.ignoresSafeArea()
 
-            AsyncImage(url: URL(string: imageURL)) { image in
-                image
-                    .resizable()
-                    .scaledToFit()
-            } placeholder: {
-                ProgressView()
+            VStack {
+                AsyncImage(url: URL(string: imageURL)) { image in
+                    image
+                        .resizable()
+                        .scaledToFit()
+                } placeholder: {
+                    ProgressView()
+                }
+                Button(action: {
+                    print("tapped")
+                    if let uiImage = UIImage(named: imageURL) {
+                        sharePhoto(image: uiImage)
+                    }
+                }) {
+                    Image(systemName: "square.and.arrow.up")
+                        .padding(.top, 20)
+                        .foregroundColor(Color("AfterBeige"))
+                }
             }
         }
         .onTapGesture {
@@ -187,5 +201,22 @@ struct FullScreenImageViewer: View {
         }
         .navigationBarHidden(true)
     }
+
+    func sharePhoto(image: UIImage) {
+        guard let data = image.jpegData(compressionQuality: 1.0) else {
+            return
+        }
+
+        if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene {
+            if let rootViewController = windowScene.windows.first?.rootViewController {
+                let activityViewController = UIActivityViewController(activityItems: [data], applicationActivities: nil)
+                rootViewController.present(activityViewController, animated: true, completion: nil)
+            }
+        }
+
+    }
+
 }
+
+
 

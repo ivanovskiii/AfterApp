@@ -11,7 +11,8 @@ struct MainView: View {
     var body: some View {
         TabView {
             AlbumListView(albumListViewModel: AlbumListViewModel(), albumViewModel: AlbumViewModel(),  album: Album(
-                user: User(id: "1", name: "John", surname: "Doe", email: "john@mail.com"),
+                user: User(id: "1", username: "joohn1", email: "john@mail.com", friends: [],
+                           friendRequests: []),
                 name: "Sample Album",
                 photos: [Photo(id: "1", imageURL: "bbb")],
                 isLocked: false,
@@ -21,19 +22,26 @@ struct MainView: View {
             ))
                 .tabItem {
                     Label("Rolls", systemImage: "film.stack")
-                        
-                }
+                        .fontWidth(.expanded)
+                }.fontWidth(.expanded)
             
             FriendsView()
                 .tabItem {
                     Label("Friends", systemImage: "person.3")
-                }
+                        .fontWidth(.expanded)
+                }.fontWidth(.expanded)
+            
+            NotificationView(userViewModel: UserViewModel())
+                .tabItem {
+                    Label("Notifications", systemImage: "bell")
+                        .fontWidth(.expanded)
+                }.fontWidth(.expanded)
             
             ProfileView()
                 .tabItem {
                     Label("Profile", systemImage: "person.circle")
                         .fontWidth(.expanded)
-                }
+                }.fontWidth(.expanded)
 
         }
     }

@@ -1,40 +1,35 @@
 //
-//  ProfileView.swift
+//  UserView.swift
 //  AfterApp
 //
-//  Created by Gorjan Ivanovski on 22.8.23.
+//  Created by Gorjan Ivanovski on 28.8.23.
 //
 
 import SwiftUI
 
-struct ProfileView: View {
+struct UserView: View {
     
-    @EnvironmentObject var authenticationViewModel: AuthenticationViewModel
+    let user: User
+    @ObservedObject var userViewModel: UserViewModel = UserViewModel()
+    @ObservedObject var authenticationViewModel: AuthenticationViewModel
     
     var body: some View {
-        VStack(alignment: .center, spacing: 15) {
-            
-            Text("@\(authenticationViewModel.currentUser?.username ?? "username")")
+        VStack(alignment: .center, spacing: 15){
+            Text("@\(user.username)")
                 .foregroundColor(Color("AfterBeige"))
                 .font(Font.custom("Shrikhand-Regular", size: 24))
-                .padding()
             
             Image(systemName: "person.circle.fill")
                 .resizable()
                 .scaledToFit()
                 .frame(width: 100)
                 .foregroundColor(Color("AfterBeige"))
-            
-            Text("Email: \(authenticationViewModel.currentUser?.email ?? "Email")")
-                .foregroundColor(Color("AfterBeige"))
-                .fontWidth(.expanded)
-            
-            Spacer()
+                .padding(.top, 5)
             
             Button{
-                authenticationViewModel.signOut()
+                userViewModel.sendFriendRequest(authenticationViewModel.currentUser!, user)
             } label: {
-                Text("Sign Out")
+                Text("Add Friend")
                     .font(.headline)
                     .foregroundColor(Color("AfterDarkGray"))
                     .frame(height: 55)
@@ -45,16 +40,16 @@ struct ProfileView: View {
             }
             .padding(.horizontal)
             .padding(.bottom, 30)
+            .padding(.top, 20)
             
         }
-        .frame(maxHeight: .infinity, alignment: .top)
+        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
         .background(Color("AfterDarkGray"))
     }
 }
 
-struct ProfileView_Previews: PreviewProvider {
+struct UserView_Previews: PreviewProvider {
     static var previews: some View {
-        ProfileView()
-            .environmentObject(AuthenticationViewModel())
+        UserView(user: User(id: "1", username: "John", email: "john@mail.com", friends: [], friendRequests: []), authenticationViewModel: AuthenticationViewModel())
     }
 }
