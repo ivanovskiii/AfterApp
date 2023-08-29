@@ -25,7 +25,7 @@ struct NotificationView: View {
     
     var body: some View {
         VStack {
-            Text("Notifications")
+            Text("Notificationsss")
                 .padding()
                 .font(Font.custom("Shrikhand-Regular", size: 24))
                 .foregroundColor(Color("AfterBeige"))
