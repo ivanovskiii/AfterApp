@@ -22,10 +22,20 @@ class UserViewModel: ObservableObject{
         userRepository.$users
             .assign(to: \.users, on: self)
             .store(in: &cancellables)
+        
+        
     }
     
     func sendFriendRequest(_ currentUser: User, _ targetUser: User) {
         userRepository.sendFriendRequest(currentUser, targetUser)
+    }
+    
+    func acceptFriendRequest(_ currentUser: User, _ targetUser: User){
+        userRepository.acceptFriendRequest(currentUser, targetUser)
+    }
+    
+    func declineFriendRequest(_ currentUser: User, _ targetUser: User){
+        userRepository.declineFriendRequest(currentUser, targetUser)
     }
     
 }

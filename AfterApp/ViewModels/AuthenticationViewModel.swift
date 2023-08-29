@@ -42,7 +42,7 @@ class AuthenticationViewModel: ObservableObject{
             self.userSession = result.user
             let user = User(id: result.user.uid, username: username, email: email, friends: friends, friendRequests: friendRequests)
             let encodedUser = try Firestore.Encoder().encode(user)
-            try await Firestore.firestore().collection("user").document(user.id).setData(encodedUser)
+            try await Firestore.firestore().collection("user").document(user.id!).setData(encodedUser)
             
         } catch{
             

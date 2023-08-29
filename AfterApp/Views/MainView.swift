@@ -25,7 +25,7 @@ struct MainView: View {
                         .fontWidth(.expanded)
                 }.fontWidth(.expanded)
             
-            FriendsView()
+            FriendsView(userViewModel: UserViewModel())
                 .tabItem {
                     Label("Friends", systemImage: "person.3")
                         .fontWidth(.expanded)

@@ -10,7 +10,19 @@ import SwiftUI
 struct FriendsView: View {
     
     @EnvironmentObject var authenticationViewModel: AuthenticationViewModel
+    @ObservedObject var userViewModel: UserViewModel
     @State private var isShowingUserListView = false
+
+    var currentUser: User? {
+        authenticationViewModel.currentUser
+    }
+    
+    var friends: [User] {
+        guard let currentUser = currentUser else {
+            return []
+        }
+        return userViewModel.users.filter { currentUser.friends.contains($0.id!) }
+    }
     
     var body: some View {
         VStack(alignment: .center, spacing: 15) {
@@ -36,7 +48,7 @@ struct FriendsView: View {
                 UserListView()
             }
             
-            if ((authenticationViewModel.currentUser?.friends.isEmpty) != nil){
+            if (friends.isEmpty){
                 Spacer()
                 Text("It seems a bit lonely here...")
                     .padding()
@@ -44,6 +56,10 @@ struct FriendsView: View {
                     .fontWidth(.expanded)
                     .padding(.horizontal)
                 Spacer()
+            } else{
+                List(friends) { friend in
+                    Text(friend.username)
+                }
             }
 
             
@@ -55,6 +71,6 @@ struct FriendsView: View {
 
 struct FriendsView_Previews: PreviewProvider {
     static var previews: some View {
-        FriendsView()
+        FriendsView(userViewModel: UserViewModel())
     }
 }
