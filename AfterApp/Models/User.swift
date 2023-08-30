@@ -3,7 +3,7 @@
 //  AfterApp
 //
 //  Created by Gorjan Ivanovski on 22.8.23.
-//g
+//
 
 import Foundation
 
