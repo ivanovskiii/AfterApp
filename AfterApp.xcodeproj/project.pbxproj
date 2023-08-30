@@ -19,6 +19,7 @@
 		1D4166242A9617BA00BE9A01 /* FriendsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D4166232A9617BA00BE9A01 /* FriendsView.swift */; };
 		1D4166282A96272400BE9A01 /* AlbumView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D4166272A96272400BE9A01 /* AlbumView.swift */; };
 		1D41662C2A96423100BE9A01 /* AlbumViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D41662B2A96423100BE9A01 /* AlbumViewModel.swift */; };
+		1D56A5BF2A9FE021005FF3D6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1D56A5BE2A9FE021005FF3D6 /* LaunchScreen.storyboard */; };
 		1D5C20B82A94EA3700BE762B /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D5C20B72A94EA3700BE762B /* User.swift */; };
 		1D5C20BA2A953EEB00BE762B /* NewAlbumSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D5C20B92A953EEB00BE762B /* NewAlbumSheetView.swift */; };
 		1D5C20BE2A95478F00BE762B /* Shrikhand-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1D5C20BD2A95478F00BE762B /* Shrikhand-Regular.ttf */; };
@@ -86,6 +87,7 @@
 		1D4166232A9617BA00BE9A01 /* FriendsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsView.swift; sourceTree = "<group>"; };
 		1D4166272A96272400BE9A01 /* AlbumView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumView.swift; sourceTree = "<group>"; };
 		1D41662B2A96423100BE9A01 /* AlbumViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumViewModel.swift; sourceTree = "<group>"; };
+		1D56A5BE2A9FE021005FF3D6 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1D5C20B72A94EA3700BE762B /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		1D5C20B92A953EEB00BE762B /* NewAlbumSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewAlbumSheetView.swift; sourceTree = "<group>"; };
 		1D5C20BD2A95478F00BE762B /* Shrikhand-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Shrikhand-Regular.ttf"; sourceTree = "<group>"; };
@@ -147,6 +149,7 @@
 			children = (
 				1D5C20BF2A9547B500BE762B /* RiveAnimations */,
 				1D5C20BC2A95472000BE762B /* Fonts */,
+				1D56A5BE2A9FE021005FF3D6 /* LaunchScreen.storyboard */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -414,6 +417,7 @@
 				1D5C20BE2A95478F00BE762B /* Shrikhand-Regular.ttf in Resources */,
 				1DB0345E29FF0E3B008AB429 /* Preview Assets.xcassets in Resources */,
 				1DB0345B29FF0E3B008AB429 /* Assets.xcassets in Resources */,
+				1D56A5BF2A9FE021005FF3D6 /* LaunchScreen.storyboard in Resources */,
 				1D958B2D2A938BED0079CE2E /* after_start_animation.riv in Resources */,
 				1DF8DF472A929B3B008EA537 /* GoogleService-Info.plist in Resources */,
 			);
@@ -642,6 +646,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleDarkContent;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -675,6 +680,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleDarkContent;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (

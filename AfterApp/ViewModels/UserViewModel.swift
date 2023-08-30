@@ -22,8 +22,6 @@ class UserViewModel: ObservableObject{
         userRepository.$users
             .assign(to: \.users, on: self)
             .store(in: &cancellables)
-        
-        
     }
     
     func sendFriendRequest(_ currentUser: User, _ targetUser: User) {
@@ -41,4 +39,10 @@ class UserViewModel: ObservableObject{
     func removeFriend(_ currentUser: User, _ targetUser: User){
         userRepository.removeFriend(currentUser, targetUser)
     }
+    
+    func cancelFriendRequest(_ currentUser: User, _ targetUser: User){
+        userRepository.cancelFriendRequest(currentUser, targetUser)
+    }
+    
+
 }

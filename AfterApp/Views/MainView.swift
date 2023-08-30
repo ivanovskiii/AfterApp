@@ -25,13 +25,15 @@ struct MainView: View {
                         .fontWidth(.expanded)
                 }.fontWidth(.expanded)
             
-            FriendsView(userViewModel: UserViewModel())
+            FriendsView(user: User(id: "1", username: "jooohn1", email: "john@mail.com", friends: [],
+                                   friendRequests: []), userViewModel: UserViewModel())
                 .tabItem {
                     Label("Friends", systemImage: "person.3")
                         .fontWidth(.expanded)
                 }.fontWidth(.expanded)
             
-            NotificationView(userViewModel: UserViewModel())
+            NotificationView(user: User(id: "1", username: "jooohn1", email: "john@mail.com", friends: [],
+                                        friendRequests: []), userViewModel: UserViewModel())
                 .tabItem {
                     Label("Notifications", systemImage: "bell")
                         .fontWidth(.expanded)

@@ -9,7 +9,7 @@ import SwiftUI
 import FirebaseAuth
 
 struct UserListView: View {
-    @ObservedObject var userViewModel: UserViewModel = UserViewModel()
+    @ObservedObject var userViewModel: UserViewModel
     @EnvironmentObject var authenticationViewModel: AuthenticationViewModel
     @State private var searchText = ""
     
@@ -52,7 +52,7 @@ struct UserListView: View {
                     .padding(.horizontal)
                 
                 List(filteredUsers) { user in
-                    NavigationLink (destination: UserView(user: user, authenticationViewModel: AuthenticationViewModel(), albumListViewModel: AlbumListViewModel()),
+                    NavigationLink (destination: UserView(user: user, userViewModel: UserViewModel(), authenticationViewModel: AuthenticationViewModel(), albumListViewModel: AlbumListViewModel()),
                         label: {
                         HStack{
                         Image(systemName: "person.circle.fill")
@@ -78,7 +78,7 @@ struct UserListView: View {
 
 struct UserListView_Previews: PreviewProvider {
     static var previews: some View {
-        UserListView()
+        UserListView(userViewModel: UserViewModel())
     }
 }
 

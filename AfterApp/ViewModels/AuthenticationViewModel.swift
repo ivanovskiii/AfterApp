@@ -39,11 +39,12 @@ class AuthenticationViewModel: ObservableObject{
         do{
             
             let result = try await Auth.auth().createUser(withEmail: email, password: password)
-            self.userSession = result.user
+            
             let user = User(id: result.user.uid, username: username, email: email, friends: friends, friendRequests: friendRequests)
             let encodedUser = try Firestore.Encoder().encode(user)
             try await Firestore.firestore().collection("user").document(user.id).setData(encodedUser)
-            
+            self.userSession = result.user
+            await fetchUser()
         } catch{
             
                 print("Failed to create user \(error.localizedDescription)")

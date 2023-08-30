@@ -19,14 +19,8 @@ final class UserRepository: ObservableObject {
             print("called init")
         }
     
-    func update(_ user: User) {
-            if let index = users.firstIndex(where: { $0.id == user.id }) {
-                users[index] = user
-            }
-        }
-
     func fetchAllUsers() {
-        store.collection("user").getDocuments { (querySnapshot, error) in
+        store.collection("user").addSnapshotListener { querySnapshot, error in
             if let error = error {
                 print("Error fetching users: \(error)")
                 return
@@ -46,6 +40,14 @@ final class UserRepository: ObservableObject {
             }
         }
     }
+
+    
+    func update(_ user: User) {
+            if let index = users.firstIndex(where: { $0.id == user.id }) {
+                users[index] = user
+            }
+        }
+
     
     func sendFriendRequest(_ currentUser: User, _ targetUser: User) {
 //            guard currentUser != nil else {
@@ -106,12 +108,12 @@ final class UserRepository: ObservableObject {
 
     
     func declineFriendRequest(_ currentUser: User, _ targetUser: User) {
-        // Remove the current user from the friend requests of the target user
-        let updatedFriendRequests = targetUser.friendRequests.filter { $0 != currentUser.id }
+        // Remove the target user from the current user's friend requests
+        let updatedCurrentUserFriendRequests = currentUser.friendRequests.filter { $0 != targetUser.id }
 
-        // Update the target user's friend requests in the Firestore document
-        store.collection("user").document(targetUser.id).updateData([
-            "friendRequests": updatedFriendRequests
+        // Update the current user's friend requests in the Firestore document
+        store.collection("user").document(currentUser.id).updateData([
+            "friendRequests": updatedCurrentUserFriendRequests
         ]) { error in
             if let error = error {
                 print("Error declining friend request: \(error)")
@@ -150,8 +152,22 @@ final class UserRepository: ObservableObject {
             }
         }
     }
+    
+    func cancelFriendRequest(_ currentUser: User, _ targetUser: User) {
+        // Remove the current user from the friend requests of the target user
+        let updatedFriendRequests = targetUser.friendRequests.filter { $0 != currentUser.id }
 
-
+        // Update the target user's friend requests in the Firestore document
+        store.collection("user").document(targetUser.id).updateData([
+            "friendRequests": updatedFriendRequests
+        ]) { error in
+            if let error = error {
+                print("Error canceling friend request: \(error)")
+            } else {
+                print("Friend request canceled successfully!")
+            }
+        }
+    }
 
 }
 

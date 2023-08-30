@@ -23,11 +23,13 @@ struct AfterAppApp: App {
     
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     @StateObject var authenticationViewModel = AuthenticationViewModel()
+    @StateObject private var userViewModel = UserViewModel()
     
     var body: some Scene {
         WindowGroup {
             ContentView()
                 .environmentObject(authenticationViewModel)
+                .environmentObject(userViewModel)
         }
     }
 }

@@ -9,13 +9,14 @@ import SwiftUI
 
 struct NotificationView: View {
     
+    let user: User
     @EnvironmentObject var authenticationViewModel: AuthenticationViewModel
     @ObservedObject var userViewModel: UserViewModel
     
     var currentUser: User? {
         authenticationViewModel.currentUser
     }
-    
+
     var friendRequestUsers: [User] {
         guard let currentUser = currentUser else {
             return []
@@ -52,18 +53,22 @@ struct NotificationView: View {
                             .fontWidth(.expanded)
                             .foregroundColor(Color("AfterBeige"))
                             .frame(height: 40)
+                        
+                        Spacer()
+                        
                         HStack{
                             Button{
-                                userViewModel.acceptFriendRequest(currentUser!, user)
+                                userViewModel.acceptFriendRequest(authenticationViewModel.currentUser!, user)
                             } label: {
                                 Image(systemName: "checkmark")
                                     .resizable()
                                     .scaledToFit()
                                     .frame(width: 18)
                                     .foregroundColor(.green)
+                                    .padding(.trailing, 15)
                             }.buttonStyle(.borderless)
                             Button{
-                                userViewModel.declineFriendRequest(currentUser!, user)
+                                userViewModel.declineFriendRequest(authenticationViewModel.currentUser!, user)
                             } label:{
                                 Image(systemName: "xmark")
                                     .resizable()
@@ -87,6 +92,7 @@ struct NotificationView: View {
 
 struct NotificationView_Previews: PreviewProvider {
     static var previews: some View {
-        NotificationView(userViewModel: UserViewModel())
+        NotificationView(user: User(id: "1", username: "jooohn1", email: "john@mail.com", friends: [],
+                                          friendRequests: []), userViewModel: UserViewModel())
     }
 }

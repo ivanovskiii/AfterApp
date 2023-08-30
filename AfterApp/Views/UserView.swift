@@ -10,20 +10,21 @@ import SwiftUI
 struct UserView: View {
     
     let user: User
-    @ObservedObject var userViewModel: UserViewModel = UserViewModel()
+    @ObservedObject var userViewModel: UserViewModel
     @ObservedObject var authenticationViewModel: AuthenticationViewModel
     @ObservedObject var albumListViewModel: AlbumListViewModel
+    
+    @State private var isFriendRequestSent = false
     
     let columns: [GridItem] = Array(repeating: GridItem(.flexible(), spacing: 16), count: 2)
     
     var body: some View {
-        VStack(alignment: .center, spacing: 15){
+        VStack(alignment: .center, spacing: 15) {
             Text("@\(user.username)")
                 .foregroundColor(Color("AfterBeige"))
                 .font(Font.custom("Shrikhand-Regular", size: 24))
             
             ScrollView {
-                
                 Image(systemName: "person.circle.fill")
                     .resizable()
                     .scaledToFit()
@@ -32,8 +33,7 @@ struct UserView: View {
                     .padding(.top, 5)
                 
                 if authenticationViewModel.currentUser?.friends.contains(user.id) ?? false {
-                    
-                    Button{
+                    Button {
                         userViewModel.removeFriend(authenticationViewModel.currentUser!, user)
                     } label: {
                         Text("Unfriend")
@@ -45,7 +45,6 @@ struct UserView: View {
                             .cornerRadius(10)
                             .fontWidth(.expanded)
                     }
-                    .padding(.horizontal)
                     .padding(.bottom, 30)
                     .padding(.top, 20)
                     
@@ -54,8 +53,8 @@ struct UserView: View {
                     
                     LazyVGrid(columns: columns, spacing: 16) {
                         ForEach(albumListViewModel.albums.sorted(by: { $0.creationDate > $1.creationDate })) { album in
-                            if album.isSharingWithFriends{
-                                if (album.user.id == user.id) {
+                            if album.isSharingWithFriends {
+                                if album.user.id == user.id {
                                     NavigationLink(destination: AlbumView(album: album), label: {
                                         ZStack {
                                             if let firstImageURL = album.getFirstImageURL() {
@@ -66,7 +65,7 @@ struct UserView: View {
                                                     .cornerRadius(20)
                                                     .frame(height: 180)
                                             }
-                                            VStack{
+                                            VStack {
                                                 Text(album.name)
                                                     .font(Font.custom("Shrikhand-Regular", size: 24))
                                                     .foregroundColor(Color("AfterBeige"))
@@ -83,35 +82,51 @@ struct UserView: View {
                             }
                         }
                     }
-                    
-                    
                 } else {
-                    Button{
-                        userViewModel.sendFriendRequest(authenticationViewModel.currentUser!, user)
-                    } label: {
-                        Text("Add Friend")
-                            .font(.headline)
-                            .foregroundColor(Color("AfterDarkGray"))
-                            .frame(height: 55)
-                            .frame(maxWidth: .infinity)
-                            .background(Color("AfterBeige"))
-                            .cornerRadius(10)
-                            .fontWidth(.expanded)
+                    if isFriendRequestSent {
+                        Button {
+                            userViewModel.cancelFriendRequest(authenticationViewModel.currentUser!, user)
+                            isFriendRequestSent = false
+                        } label: {
+                            Text("Cancel Friend Request")
+                                .font(.headline)
+                                .foregroundColor(Color("AfterDarkGray"))
+                                .frame(height: 55)
+                                .frame(maxWidth: .infinity)
+                                .background(Color("AfterBeige"))
+                                .cornerRadius(10)
+                                .fontWidth(.expanded)
+                        }
+                        .padding(.bottom, 30)
+                        .padding(.top, 20)
+                    } else {
+                        Button {
+                            userViewModel.sendFriendRequest(authenticationViewModel.currentUser!, user)
+                            isFriendRequestSent = true
+                        } label: {
+                            Text("Add Friend")
+                                .font(.headline)
+                                .foregroundColor(Color("AfterDarkGray"))
+                                .frame(height: 55)
+                                .frame(maxWidth: .infinity)
+                                .background(Color("AfterBeige"))
+                                .cornerRadius(10)
+                                .fontWidth(.expanded)
+                        }
+                        .padding(.bottom, 30)
+                        .padding(.top, 20)
                     }
-                    .padding(.horizontal)
-                    .padding(.bottom, 30)
-                    .padding(.top, 20)
                 }
             }
+            .padding()
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
         .background(Color("AfterDarkGray"))
-            
     }
 }
 
 struct UserView_Previews: PreviewProvider {
     static var previews: some View {
-        UserView(user: User(id: "1", username: "John", email: "john@mail.com", friends: [], friendRequests: []), authenticationViewModel: AuthenticationViewModel(), albumListViewModel: AlbumListViewModel())
+        UserView(user: User(id: "1", username: "John", email: "john@mail.com", friends: [], friendRequests: []), userViewModel: UserViewModel(), authenticationViewModel: AuthenticationViewModel(), albumListViewModel: AlbumListViewModel())
     }
 }

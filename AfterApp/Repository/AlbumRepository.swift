@@ -16,6 +16,7 @@ final class AlbumRepository: ObservableObject{
     
     init(){
         get()
+        print("called album repository init")
     }
     
     func get(){

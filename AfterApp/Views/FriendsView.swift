@@ -1,3 +1,4 @@
+
 //
 //  FriendsView.swift
 //  AfterApp
@@ -9,6 +10,7 @@ import SwiftUI
 
 struct FriendsView: View {
     
+    let user: User
     @EnvironmentObject var authenticationViewModel: AuthenticationViewModel
     @ObservedObject var userViewModel: UserViewModel
     @State private var isShowingUserListView = false
@@ -46,7 +48,7 @@ struct FriendsView: View {
                     .padding(.leading, 300)
                 }
                 .sheet(isPresented: $isShowingUserListView){
-                    UserListView()
+                    UserListView(userViewModel: UserViewModel())
                 }
                 
                 if (friends.isEmpty){
@@ -59,7 +61,7 @@ struct FriendsView: View {
                     Spacer()
                 } else{
                     List(friends) { friend in
-                        NavigationLink (destination: UserView(user: friend, authenticationViewModel: AuthenticationViewModel(), albumListViewModel: AlbumListViewModel()),
+                        NavigationLink (destination: UserView(user: friend, userViewModel: UserViewModel(), authenticationViewModel: AuthenticationViewModel(), albumListViewModel: AlbumListViewModel()),
                                         label: {
                             HStack{
                             Image(systemName: "person.circle.fill")
@@ -81,12 +83,15 @@ struct FriendsView: View {
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity , alignment: .top)
         .background(Color("AfterDarkGray"))
+        
         }
     }
 }
 
 struct FriendsView_Previews: PreviewProvider {
     static var previews: some View {
-        FriendsView(userViewModel: UserViewModel())
+        FriendsView(user: User(id: "1", username: "jooohn1", email: "john@mail.com", friends: [],
+                               friendRequests: []), userViewModel: UserViewModel())
+        
     }
 }
