@@ -14,45 +14,10 @@ final class UserRepository: ObservableObject {
 
     private let store = Firestore.firestore()
 
-    private let path = "user"
-    private var usersListener: ListenerRegistration?
-
         init() {
-            get()
+            fetchAllUsers()
             print("called init")
         }
-        
-        deinit {
-            usersListener?.remove()
-        }
-
-    func get() {
-        usersListener = store.collection(path).addSnapshotListener { (snapshot, error) in
-            if let error = error {
-                print("Error fetching users: \(error)")
-                return
-            }
-            
-            // Print snapshot changes
-            snapshot?.documentChanges.forEach { change in
-                print("Document change: \(change.document.data())")
-            }
-
-            guard let documents = snapshot?.documents else {
-                print("No users found")
-                return
-            }
-
-            let users = documents.compactMap { document in
-                try? document.data(as: User.self)
-            }
-
-            DispatchQueue.main.async {
-                self.users = users
-            }
-        }
-    }
-
     
     func update(_ user: User) {
             if let index = users.firstIndex(where: { $0.id == user.id }) {
