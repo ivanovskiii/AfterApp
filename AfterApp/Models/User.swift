@@ -6,8 +6,6 @@
 //
 
 import Foundation
-import FirebaseFirestoreSwift
-import FirebaseFirestore
 
 struct User: Identifiable, Codable{
     let id: String

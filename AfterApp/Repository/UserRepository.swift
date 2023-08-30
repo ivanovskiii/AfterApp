@@ -56,7 +56,7 @@ final class UserRepository: ObservableObject {
             let updatedFriendRequests = targetUser.friendRequests + [currentUser.id]
 
             // Update the target user's friend requests in the Firestore document
-        store.collection("user").document(targetUser.id!).updateData(["friendRequests": updatedFriendRequests]) { error in
+        store.collection("user").document(targetUser.id).updateData(["friendRequests": updatedFriendRequests]) { error in
                 if let error = error {
                     print("Error sending friend request: \(error)")
                 } else {
@@ -79,7 +79,7 @@ final class UserRepository: ObservableObject {
         let updatedCurrentUserFriends = currentUser.friends + [targetUser.id]
 
         // Update both users' friend requests and friends in the Firestore documents
-        store.collection("user").document(targetUser.id!).updateData([
+        store.collection("user").document(targetUser.id).updateData([
             "friendRequests": updatedFriendRequests,
             "friends": updatedFriends
         ]) { [weak self] error in
@@ -89,7 +89,7 @@ final class UserRepository: ObservableObject {
                 print("Friend request accepted for target user!")
                 
                 // Update current user's data
-                self?.store.collection("user").document(currentUser.id!).updateData([
+                self?.store.collection("user").document(currentUser.id).updateData([
                     "friendRequests": updatedCurrentUserFriendRequests,
                     "friends": updatedCurrentUserFriends
                 ]) { error in
@@ -110,7 +110,7 @@ final class UserRepository: ObservableObject {
         let updatedFriendRequests = targetUser.friendRequests.filter { $0 != currentUser.id }
 
         // Update the target user's friend requests in the Firestore document
-        store.collection("user").document(targetUser.id!).updateData([
+        store.collection("user").document(targetUser.id).updateData([
             "friendRequests": updatedFriendRequests
         ]) { error in
             if let error = error {

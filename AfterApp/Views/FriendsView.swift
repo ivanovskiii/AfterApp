@@ -21,7 +21,7 @@ struct FriendsView: View {
         guard let currentUser = currentUser else {
             return []
         }
-        return userViewModel.users.filter { currentUser.friends.contains($0.id!) }
+        return userViewModel.users.filter { currentUser.friends.contains($0.id) }
     }
     
     var body: some View {

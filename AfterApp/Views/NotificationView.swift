@@ -20,12 +20,12 @@ struct NotificationView: View {
         guard let currentUser = currentUser else {
             return []
         }
-        return userViewModel.users.filter { currentUser.friendRequests.contains($0.id!) }
+        return userViewModel.users.filter { currentUser.friendRequests.contains($0.id) }
     }
     
     var body: some View {
         VStack {
-            Text("Notificationsss")
+            Text("Notifications")
                 .padding()
                 .font(Font.custom("Shrikhand-Regular", size: 24))
                 .foregroundColor(Color("AfterBeige"))
