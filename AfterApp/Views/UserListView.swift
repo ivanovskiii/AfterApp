@@ -18,15 +18,15 @@ struct UserListView: View {
         }
     
     var filteredUsers: [User] {
-        if searchText.isEmpty {
-            return userViewModel.users.filter { user in
-                user.id != currentUserID
-            }
-        } else {
+//        if searchText.isEmpty {
+//            return userViewModel.users.filter { user in
+//                user.id != currentUserID
+//            }
+//        } else {
             return userViewModel.users.filter { user in
                 user.id != currentUserID && user.username.localizedCaseInsensitiveContains(searchText)
             }
-        }
+//        }
     }
 
     var body: some View {

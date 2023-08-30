@@ -120,6 +120,37 @@ final class UserRepository: ObservableObject {
             }
         }
     }
+    
+    func removeFriend(_ currentUser: User, _ targetUser: User) {
+        // Remove the target user from the friends of the current user
+        let updatedCurrentUserFriends = currentUser.friends.filter { $0 != targetUser.id }
+
+        // Remove the current user from the friends of the target user
+        let updatedTargetUserFriends = targetUser.friends.filter { $0 != currentUser.id }
+
+        // Update both users' friends in the Firestore documents
+        store.collection("user").document(currentUser.id).updateData([
+            "friends": updatedCurrentUserFriends
+        ]) { [weak self] error in
+            if let error = error {
+                print("Error removing friend for current user: \(error)")
+            } else {
+                print("Friend removed for current user!")
+
+                // Update target user's data
+                self?.store.collection("user").document(targetUser.id).updateData([
+                    "friends": updatedTargetUserFriends
+                ]) { error in
+                    if let error = error {
+                        print("Error updating target user data: \(error)")
+                    } else {
+                        print("Target user's friend data updated!")
+                    }
+                }
+            }
+        }
+    }
+
 
 
 }

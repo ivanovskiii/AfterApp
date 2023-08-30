@@ -22,17 +22,36 @@ struct UserView: View {
                 .foregroundColor(Color("AfterBeige"))
                 .font(Font.custom("Shrikhand-Regular", size: 24))
             
-            Image(systemName: "person.circle.fill")
-                .resizable()
-                .scaledToFit()
-                .frame(width: 100)
-                .foregroundColor(Color("AfterBeige"))
-                .padding(.top, 5)
-            
-            if authenticationViewModel.currentUser?.friends.contains(user.id) ?? false {
-                Text("\(user.username)'s Rolls")
-                    .padding()
-                ScrollView {
+            ScrollView {
+                
+                Image(systemName: "person.circle.fill")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 100)
+                    .foregroundColor(Color("AfterBeige"))
+                    .padding(.top, 5)
+                
+                if authenticationViewModel.currentUser?.friends.contains(user.id) ?? false {
+                    
+                    Button{
+                        userViewModel.removeFriend(authenticationViewModel.currentUser!, user)
+                    } label: {
+                        Text("Unfriend")
+                            .font(.headline)
+                            .foregroundColor(Color("AfterDarkGray"))
+                            .frame(height: 55)
+                            .frame(maxWidth: .infinity)
+                            .background(Color("AfterBeige"))
+                            .cornerRadius(10)
+                            .fontWidth(.expanded)
+                    }
+                    .padding(.horizontal)
+                    .padding(.bottom, 30)
+                    .padding(.top, 20)
+                    
+                    Text("\(user.username)'s Rolls")
+                        .padding()
+                    
                     LazyVGrid(columns: columns, spacing: 16) {
                         ForEach(albumListViewModel.albums.sorted(by: { $0.creationDate > $1.creationDate })) { album in
                             if album.isSharingWithFriends{
@@ -64,29 +83,30 @@ struct UserView: View {
                             }
                         }
                     }
-                }.padding()
-                
-                
-            } else {
-                Button{
-                    userViewModel.sendFriendRequest(authenticationViewModel.currentUser!, user)
-                } label: {
-                    Text("Add Friend")
-                        .font(.headline)
-                        .foregroundColor(Color("AfterDarkGray"))
-                        .frame(height: 55)
-                        .frame(maxWidth: .infinity)
-                        .background(Color("AfterBeige"))
-                        .cornerRadius(10)
-                        .fontWidth(.expanded)
+                    
+                    
+                } else {
+                    Button{
+                        userViewModel.sendFriendRequest(authenticationViewModel.currentUser!, user)
+                    } label: {
+                        Text("Add Friend")
+                            .font(.headline)
+                            .foregroundColor(Color("AfterDarkGray"))
+                            .frame(height: 55)
+                            .frame(maxWidth: .infinity)
+                            .background(Color("AfterBeige"))
+                            .cornerRadius(10)
+                            .fontWidth(.expanded)
+                    }
+                    .padding(.horizontal)
+                    .padding(.bottom, 30)
+                    .padding(.top, 20)
                 }
-                .padding(.horizontal)
-                .padding(.bottom, 30)
-                .padding(.top, 20)
             }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
         .background(Color("AfterDarkGray"))
+            
     }
 }
 

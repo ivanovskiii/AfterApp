@@ -13,6 +13,7 @@ struct AlbumView: View {
     let album: Album
     
     @StateObject private var albumViewModel = AlbumViewModel()
+    @EnvironmentObject var authenticationViewModel: AuthenticationViewModel
 
     var body: some View {
         VStack(alignment: .center, spacing: 5) {
@@ -68,33 +69,35 @@ struct AlbumView: View {
                                     .fontWeight(.bold)
                                 
                                 Spacer()
-
-                                Button {
-                                    albumViewModel.showCamera = true
-                                } label: {
-                                    HStack {
-                                        Image(systemName: "camera.fill")
-                                        Text("Add Photo")
+                                
+                                if authenticationViewModel.currentUser?.id == album.user.id {
+                                    Button {
+                                        albumViewModel.showCamera = true
+                                    } label: {
+                                        HStack {
+                                            Image(systemName: "camera.fill")
+                                            Text("Add Photo")
+                                        }
+                                        .font(.headline)
+                                        .foregroundColor(Color("AfterDarkGray"))
+                                        .frame(height: 55)
+                                        .frame(maxWidth: .infinity)
+                                        .background(Color("AfterBeige"))
+                                        .cornerRadius(10)
+                                        .fontWidth(.expanded)
                                     }
-                                    .font(.headline)
-                                    .foregroundColor(Color("AfterDarkGray"))
-                                    .frame(height: 55)
-                                    .frame(maxWidth: .infinity)
-                                    .background(Color("AfterBeige"))
-                                    .cornerRadius(10)
-                                    .fontWidth(.expanded)
-                                }
-                                .padding(.horizontal)
-                                .padding(.bottom, 30)
-                                .disabled(albumViewModel.isAddingPhoto)
-
-                                if albumViewModel.isAddingPhoto {
-                                    VStack {
-                                        ProgressView()
-                                        Text("Adding photo to Roll")
-                                            .fontWidth(.expanded)
-                                            .foregroundColor(Color("AfterBeige"))
-                                            .padding(.bottom, 30)
+                                    .padding(.horizontal)
+                                    .padding(.bottom, 30)
+                                    .disabled(albumViewModel.isAddingPhoto)
+                                    
+                                    if albumViewModel.isAddingPhoto {
+                                        VStack {
+                                            ProgressView()
+                                            Text("Adding photo to Roll")
+                                                .fontWidth(.expanded)
+                                                .foregroundColor(Color("AfterBeige"))
+                                                .padding(.bottom, 30)
+                                        }
                                     }
                                 }
                             }

@@ -38,4 +38,7 @@ class UserViewModel: ObservableObject{
         userRepository.declineFriendRequest(currentUser, targetUser)
     }
     
+    func removeFriend(_ currentUser: User, _ targetUser: User){
+        userRepository.removeFriend(currentUser, targetUser)
+    }
 }
