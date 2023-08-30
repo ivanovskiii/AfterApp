@@ -13,7 +13,7 @@ struct NewAlbumSheetView: View {
     @EnvironmentObject var authenticationViewModel: AuthenticationViewModel
     @Environment(\.dismiss) var dismiss
     @State var albumName = ""
-    @State var isPrivate = false
+    @State var isSharingWithFriends = false
     
     
     var body: some View {
@@ -38,7 +38,7 @@ struct NewAlbumSheetView: View {
                         .stroke(.white, lineWidth: 1)
                 }
             
-            Toggle("Share With Friends", isOn: $isPrivate)
+            Toggle("Share With Friends", isOn: $isSharingWithFriends)
                 .frame(height: 55)
                 .foregroundColor(Color("AfterBeige"))
                 .fontWidth(.expanded)
@@ -46,7 +46,7 @@ struct NewAlbumSheetView: View {
             Spacer()
             
             Button() {
-                let album = Album(user: authenticationViewModel.currentUser!, name: albumName, photos: [], isLocked: true, unlockTime: Date().addingTimeInterval(12 * 3600), isPrivate: isPrivate, creationDate: Date())
+                let album = Album(user: authenticationViewModel.currentUser!, name: albumName, photos: [], isLocked: true, unlockTime: Date().addingTimeInterval(12 * 3600), isSharingWithFriends: isSharingWithFriends, creationDate: Date())
                 albumListViewModel.add(album)
                 let impactMed = UIImpactFeedbackGenerator(style: .heavy)
                     impactMed.impactOccurred()

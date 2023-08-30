@@ -25,47 +25,63 @@ struct FriendsView: View {
     }
     
     var body: some View {
-        VStack(alignment: .center, spacing: 15) {
-            
-            ZStack {
-                Text("Friends")
-                    .padding()
-                    .font(Font.custom("Shrikhand-Regular", size: 24))
-                    .foregroundColor(Color("AfterBeige"))
-                .padding(.horizontal)
+        NavigationStack {
+            VStack(alignment: .center, spacing: 15) {
                 
-                Button{
-                    isShowingUserListView.toggle()
-                } label: {
-                    Image(systemName: "person.badge.plus")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 25)
+                ZStack {
+                    Text("Friends")
+                        .padding()
+                        .font(Font.custom("Shrikhand-Regular", size: 24))
+                        .foregroundColor(Color("AfterBeige"))
+                        .padding(.horizontal)
+                    
+                    Button{
+                        isShowingUserListView.toggle()
+                    } label: {
+                        Image(systemName: "person.badge.plus")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 25)
+                    }
+                    .padding(.leading, 300)
                 }
-                .padding(.leading, 300)
-            }
-            .sheet(isPresented: $isShowingUserListView){
-                UserListView()
-            }
-            
-            if (friends.isEmpty){
-                Spacer()
-                Text("It seems a bit lonely here...")
-                    .padding()
-                    .foregroundColor(Color("AfterBeige"))
-                    .fontWidth(.expanded)
-                    .padding(.horizontal)
-                Spacer()
-            } else{
-                List(friends) { friend in
-                    Text(friend.username)
+                .sheet(isPresented: $isShowingUserListView){
+                    UserListView()
+                }
+                
+                if (friends.isEmpty){
+                    Spacer()
+                    Text("It seems a bit lonely here...")
+                        .padding()
+                        .foregroundColor(Color("AfterBeige"))
+                        .fontWidth(.expanded)
+                        .padding(.horizontal)
+                    Spacer()
+                } else{
+                    List(friends) { friend in
+                        NavigationLink (destination: UserView(user: friend, authenticationViewModel: AuthenticationViewModel(), albumListViewModel: AlbumListViewModel()),
+                                        label: {
+                            HStack{
+                            Image(systemName: "person.circle.fill")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 25)
+                                .padding(.trailing, 20)
+                                .foregroundColor(Color("AfterBeige"))
+                            Text("@\(friend.username)")
+                                .fontWidth(.expanded)
+                                .foregroundColor(Color("AfterBeige"))
+                                .frame(height: 40)
+                        }
+                        })
+                    }
+                    .scrollContentBackground(.hidden)
+                    .background(Color("AfterDarkGray"))
                 }
             }
-
-            
-        }
-        .frame(maxWidth: .infinity, maxHeight: .infinity , alignment: .top)
+            .frame(maxWidth: .infinity, maxHeight: .infinity , alignment: .top)
         .background(Color("AfterDarkGray"))
+        }
     }
 }
 

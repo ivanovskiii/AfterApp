@@ -16,7 +16,7 @@ struct Album: Identifiable, Codable {
     var photos: [Photo]
     var isLocked: Bool
     var unlockTime: Date
-    var isPrivate: Bool
+    var isSharingWithFriends: Bool
     var creationDate: Date
     
     func getFirstImageURL() -> String? {

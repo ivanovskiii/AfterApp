@@ -101,7 +101,7 @@ struct AlbumListView_Previews: PreviewProvider {
             photos: [Photo(id: "1", imageURL: "bbb")],
             isLocked: false,
             unlockTime: Date().addingTimeInterval(12 * 3600),
-            isPrivate: false, creationDate: Date()
+            isSharingWithFriends: false, creationDate: Date()
         ))
             .environmentObject(AuthenticationViewModel())
     }

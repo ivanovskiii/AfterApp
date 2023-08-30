@@ -15,13 +15,21 @@ struct AlbumView: View {
     @StateObject private var albumViewModel = AlbumViewModel()
 
     var body: some View {
-        VStack(alignment: .center, spacing: 15) {
+        VStack(alignment: .center, spacing: 5) {
             
-            Text("\(album.name)")
-                .padding()
-                .frame(maxWidth: .infinity, alignment: .top)
-                .font(Font.custom("Shrikhand-Regular", size: 24))
-                .foregroundColor(Color("AfterBeige"))
+            let formattedDate = {
+                album.creationDate.formatted()
+            }
+            VStack{
+                Text("\(album.name)")
+                    .padding()
+                    .frame(maxWidth: .infinity, alignment: .top)
+                    .font(Font.custom("Shrikhand-Regular", size: 24))
+                    .foregroundColor(Color("AfterBeige"))
+                Text(formattedDate())
+                    .foregroundColor(Color("AfterBeige"))
+                    .fontWidth(.expanded)
+            }
             
             VStack {
                 
@@ -138,7 +146,7 @@ struct AlbumView_Previews: PreviewProvider {
             photos: [Photo(id: "1", imageURL: "bbb")],
             isLocked: false,
             unlockTime: Date().addingTimeInterval(12 * 3600),
-            isPrivate: false,
+            isSharingWithFriends: false,
             creationDate: Date()
         )
         )

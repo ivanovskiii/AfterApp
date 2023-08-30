@@ -17,7 +17,7 @@ struct MainView: View {
                 photos: [Photo(id: "1", imageURL: "bbb")],
                 isLocked: false,
                 unlockTime: Date().addingTimeInterval(12 * 3600),
-                isPrivate: false,
+                isSharingWithFriends: false,
                 creationDate: Date()
             ))
                 .tabItem {

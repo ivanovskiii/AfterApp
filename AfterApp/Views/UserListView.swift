@@ -52,7 +52,7 @@ struct UserListView: View {
                     .padding(.horizontal)
                 
                 List(filteredUsers) { user in
-                    NavigationLink (destination: UserView(user: user, authenticationViewModel: AuthenticationViewModel()),
+                    NavigationLink (destination: UserView(user: user, authenticationViewModel: AuthenticationViewModel(), albumListViewModel: AlbumListViewModel()),
                         label: {
                         HStack{
                         Image(systemName: "person.circle.fill")
@@ -67,6 +67,8 @@ struct UserListView: View {
                             .frame(height: 40)
                     }})
                 }
+                .scrollContentBackground(.hidden)
+                .background(Color("AfterDarkGray"))
             }
             .frame(maxHeight: .infinity, alignment: .center)
             .background(Color("AfterDarkGray"))
