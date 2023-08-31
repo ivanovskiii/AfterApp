@@ -1,3 +1,10 @@
+//
+//  AlbumListView.swift
+//  AfterApp
+//
+//  Created by Gorjan Ivanovski on 23.08.23.
+//
+
 import SwiftUI
 
 struct AlbumListView: View {
